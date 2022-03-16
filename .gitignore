@@ -1,0 +1,6 @@
+/site-content/generated/
+dist
+.env
+node_modules
+.DS_Store
+output
