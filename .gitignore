@@ -1,4 +1,3 @@
-/site-content/generated/
 dist
 .env
 node_modules
