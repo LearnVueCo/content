@@ -9,7 +9,7 @@ snippet: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 # Test
 
-This should be on the site lol
+This is all in the dev environment!
 
 Here is me testing if the Github action works! With updated dates, too.
 
