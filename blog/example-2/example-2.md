@@ -9,7 +9,7 @@ snippet: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 # Example 2
 
-This should be on the site lol
+Are all of my actions working in sync?
 
 Here is me testing if the Github action works! With updated dates, too.
 
