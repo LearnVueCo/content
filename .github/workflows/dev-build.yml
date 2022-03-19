@@ -11,9 +11,13 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-      - uses: peter-evans/repository-dispatch@v1
+      - uses: actions/github-script@v6
         with:
-          token: ${{ secrets.PAT_SECRET }}
-          repository: matthewmaribojoc/learnvue-content-scripts
-          event-type: dev
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          github-token: ${{ secrets.PAT_SECRET }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'matthewmaribojoc',
+              repo: 'learnvue-content-scripts',
+              workflow_id: 'dev.yml',
+              ref: 'develop'
+            })

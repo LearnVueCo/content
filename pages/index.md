@@ -2,7 +2,7 @@
 title: 'LearnVue - Vue Tutorials'
 ---
 
-# AYO LET'S GO
+# NEWEST UPDATES!!!
 
 Hello world! This is the index file, that I'm working on. I think it's cool.
 
