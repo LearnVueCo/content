@@ -2,11 +2,13 @@
 title: 'LearnVue - Vue Tutorials'
 ---
 
-[//]: # 'START ARTICLE-VIDEO-HEADER'
+[//]: # 'INSERT ARTICLE-VIDEO-HEADER --slug test --title Latest'
 
 # NEWEST UPDATES!!!
 
 Hello world! This is the index file, that I'm working on. I think it's cool.
+
+simp city
 
 [Read more](https://learnvue.co)
 

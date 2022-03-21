@@ -13,7 +13,7 @@ videoLink: https://www.youtube.com/watch?v=Z6iBAixVJ5Y
 Vue Template Refs give our Javascript code a reference to easily access the template. For example, if we needed
 quick access to a component or HTML element, template refs is the perfect solution.
 
-In Vue 3, the Composition API gives us another way to use template refs. It joins the concept of reactive refs and template refs giving us just one syntax in our Javascript for both situations.
+> In Vue 3, the Composition API gives us another way to use template refs. It joins the concept of reactive refs and template refs giving us just one syntax in our Javascript for both situations.
 
 In this tutorial, we’ll be learning all about template refs: how to use them in both the Options API and Composition API, some advanced refs techniques, as well as look at good times to use this feature.
 
