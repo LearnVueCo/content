@@ -2,7 +2,7 @@
 title: 'LearnVue - Vue Tutorials'
 ---
 
-[//]: # 'INSERT ARTICLE-VIDEO-HEADER --slug a-guide-to-vue-emit-how-to-emit-custom-events-in-vue --title Latest'
+[//]: # 'INSERT ARTICLE-VIDEO-HEADER --slug 4-awesome-examples-of-vue-router-transitions --title Latest'
 
 # NEWEST UPDATES!!!
 

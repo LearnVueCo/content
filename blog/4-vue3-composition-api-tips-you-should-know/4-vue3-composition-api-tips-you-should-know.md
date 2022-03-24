@@ -1,10 +1,9 @@
 ---
 author: Matt Maribojoc
-title: 4 Vue 3 Composition API Tips You Should Know
+title: Vue 3 Composition API Tips You Should Know
 snippet: Learn some tips you should know a little about the Composition API and see how to implement them into your Vue3 projects.
 createdDate: 2020/01/20
 tags: composition api,tips,vue3
-slug: 4-vue3-composition-api-tips-you-should-know
 category: Dev Tips
 ---
 

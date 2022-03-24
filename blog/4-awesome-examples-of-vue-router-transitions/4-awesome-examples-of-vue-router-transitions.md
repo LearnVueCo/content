@@ -4,7 +4,6 @@ title: 4 Awesome Examples of Vue Router Transitions
 snippet: Vue Router transitions are a great way to add style and personalization to your app by adding smooth animations/transitions in Vue.
 createdDate: 2021/01/21
 tags: tips,tutorials
-slug: 4-awesome-examples-of-vue-router-transitions
 videoLink: https://youtube.com/v/L77Uq93XXzk
 category: Dev Tips
 ---
@@ -47,13 +46,13 @@ However, in newer versions of Vue Router, we have to use the v-slot to destructu
 
 ## Different Transitions for Each Route
 
-By default, wrapping `&lt;component&gt;` with `&lt;transition&gt;` will add the same transition across every route of your app.
+By default, wrapping `<component>` with `<transition>` will add the same transition across every route of your app.
 
 There are two different ways that we can customize transitions for each route.
 
 ### Moving Transition into Individual Components
 
-First, instead of wrapping our dynamic component with a transition component, we can move `&lt;transition&gt;` into each individual component. Something like this:
+First, instead of wrapping our dynamic component with a transition component, we can move `<transition>` into each individual component. Something like this:
 
 ```vue
 <template>

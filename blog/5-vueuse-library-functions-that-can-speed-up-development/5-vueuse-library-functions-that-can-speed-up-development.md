@@ -4,13 +4,10 @@ title: 5 VueUse Library Functions That Can Speed Up Development
 snippet: VueUse is an open-source project that provides Vue developers with a huge collection of essential Composition API utility functions for both Vue 2 and Vue 3.
 createdDate: 2021/07/14
 tags: utility functions,vue use
-slug: 5-vueuse-library-functions-that-can-speed-up-development
 category: Top Tools
 ---
 
 VueUse is an open-source project by Anthony Fu that provides Vue developers with a huge collection of essential Composition API utility functions for both Vue 2 and Vue 3.
-
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/5-vueuse-library-functions-that-can-speed-up-development-1.png)
 
 It has dozens of solutions for common developer use cases like tracking ref changes, detecting element visibility, simplifying common Vue patterns, keyboard/mouse inputs, and more. It’s a great way to really save time in development because you don’t have to add all of this standard functionality on your own.
 
@@ -46,7 +43,7 @@ There are two options for installing VueUse: npm or CDN
 npm i @vueuse/core # yarn add @vueuse/core
 ```
 
-```js
+```vue
 <script src="https://unpkg.com/@vueuse/shared"></script>
 <script src="https://unpkg.com/@vueuse/core"></script>
 ```
