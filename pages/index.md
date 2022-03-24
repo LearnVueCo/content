@@ -2,7 +2,7 @@
 title: 'LearnVue - Vue Tutorials'
 ---
 
-[//]: # 'INSERT ARTICLE-VIDEO-HEADER --slug test --title Latest'
+[//]: # 'INSERT ARTICLE-VIDEO-HEADER --slug a-guide-to-vue-emit-how-to-emit-custom-events-in-vue --title Latest'
 
 # NEWEST UPDATES!!!
 
