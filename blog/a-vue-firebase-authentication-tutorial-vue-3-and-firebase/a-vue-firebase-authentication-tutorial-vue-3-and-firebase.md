@@ -4,7 +4,6 @@ title: A Vue Firebase Authentication Tutorial - Vue 3 and Firebase
 snippet: How to create a simple Vue and Firebase authentication system using Vue 3. This is a quick manage to get email and password accounts in Vue.
 createdDate: 2021/06/07
 tags: authentication,composition api,firebase,vue 3
-slug: a-vue-firebase-authentication-tutorial-vue-3-and-firebase
 videoLink: https://youtube.com/v/xceR7mrrXsA
 category: Full Tutorials
 ---
@@ -26,12 +25,7 @@ Let’s jump right in!
 At a high level, there are two different parts for our application:
 
 -   A Vue frontend that allows us to create accounts, sign-in, and view content
-
-<!-- -->
-
 -   A Firebase project that handles authentication
-
-<!-- -->
 
 To make our Vue app, we’re going to be using Vue 3 and Vite. If you haven’t used either before, I recommend checking out our introduction to Vite tutorial first.
 
@@ -39,11 +33,17 @@ To make our Vue app, we’re going to be using Vue 3 and Vite. If you haven’t 
 
 First, we need to create our app. So let’s open up a terminal and say `npm init @vitejs/app`
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-1.png)Then, we can add our project name and since Vite is framework-agnostic, we have to select Vue as our template.
+Then, we can add our project name and since Vite is framework-agnostic, we have to select Vue as our template.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-2.png)Now, let’s run these commands to install all of our dependencies and start our project.
+![](img/vite-console.png)
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Installing dependencies and running our app</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+Now, let’s run these commands to install all of our dependencies and start our project.
+
+```bash
+cd vue-firebase-authentication
+npm install
+npm run dev
+```
 
 Our Vite app is now up and running. We can navigate to `http://localhost:3000` and see the default starter app in our browser.
 
@@ -53,65 +53,98 @@ We’ll be setting up the rest of our app including multiple pages in a little b
 
 Inside our browser, let’s navigate to the [Firebase Console](https://console.firebase.google.com/u/0/) and give our project a name.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-3.png)On the next slide, it doesn’t really matter whether or not we choose to add Google Analytics. For this tutorial, it’s not necessary so I’m not going to.
+![](img/firebase-name.png)
+
+On the next slide, it doesn’t really matter whether or not we choose to add Google Analytics. For this tutorial, it’s not necessary so I’m not going to.
 
 After the project is created, let’s create a Firebase web app by clicking this button.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-4.png)Once we give our project a name, we are given a block of code. The highlighted section will come in handy later, so try to keep this page open. But if you accidentally close it, you can always find your way back to it from your project settings.
+![](img/firebase-web-app.png)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-5.png)And that’s all the setup we have to do for now to create our Firebase project.
+Once we give our project a name, we are given a block of code. The highlighted section will come in handy later, so try to keep this page open. But if you accidentally close it, you can always find your way back to it from your project settings.
+
+And that’s all the setup we have to do for now to create our Firebase project.
 
 ### Using Vue Router to create pages
 
 Our Vue app will be pretty simple – only consisting of four pages:
 
 -   A `/home` page with some basic template
-
-<!-- -->
-
 -   A `/registration` page to create counts
-
-<!-- -->
-
 -   A `/sign-in` page for existing users
-
-<!-- -->
-
 -   A `/feed` page that requires a logged-in user
-
-<!-- -->
 
 So let’s create these files inside of a folder called `src/views`. We’ll be filling each of these throughout the rest of this tutorial, but for our router to work, we need this to exist.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-6.png)We’re going to be using Vue Router to handle all of these routes. First, we have to install the Vue Router version compatible with Vue 3. In our terminal, let’s say…
+![](img/vue-app-pages.png)
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Installing Vue Router</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+We’re going to be using Vue Router to handle all of these routes. First, we have to install the Vue Router version compatible with Vue 3. In our terminal, let’s say…
+
+```bash
+npm install vue-router@4
+```
 
 Then, we can define all of our routes inside a `src/router/index.js` file.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">src/router/index.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+```js{}[src/router/index.js]
+import { createRouter, createWebHistory } from "vue-router";
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/",
+      component: () => import("../views/Home.vue"),
+    },
+    {
+      path: "/register",
+      component: () => import("../views/Register.vue"),
+    },
+    {
+      path: "/sign-in",
+      component: () => import("../views/SignIn.vue"),
+    },
+    {
+      path: "/feed",
+      component: () => import("../views/Feed.vue"),
+    },
+  ],
+});
+
+export default router;
+
+```
 
 This code uses Vue Router to map URL paths to Vue components inside of the `src/views` folder.
 
 Finally, we have to use these routes and this has two steps:
 
 -   Telling our root Vue app instance to use the router we just created
-
-<!-- -->
-
 -   Declaring a router-view element inside of `App.vue`
-
-<!-- -->
 
 We can tackle the first task inside of `src/main.js`, we have to store the value of `createApp` and then use the .use method to add our router. Then, we can just call `.mount` to add our Vue instance onto our `#app` element.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">src/main.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
+```js{}[main.js]
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+
+const app = createApp(App);
+
+app.use(router);
+
+app.mount("#app");
+```
 
 That’s it.
 
 For the second step, we have to open up `App.vue` and replace our template code with a `&lt;router-view&gt;` element. And this renders whatever component the router resolves to – meaning that it will **change based on the current path in the URL.**
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue - rendering router-view</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="4"></precode></div></section>
+```vue{}[App.vue]
+<template>
+  <router-view />
+</template>
+```
 
 Awesome, now if we navigate any of the routes we declared, we’ll see the corresponding Vue component.
 
@@ -121,11 +154,27 @@ To make it easy for us to get around the different pages of our app, let’s add
 
 Since our `App.vue` file contains our router view, this navigation section will be available across all the different pages of our app.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue - Navigation</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="5"></precode></div></section>
+```vue{}[App.vue]
+<template>
+  <div>
+    <nav>
+      <router-link to="/"> Home </router-link> |
+      <router-link to="/feed"> Feed </router-link> |
+      <router-link to="/register"> Register </router-link> |
+      <router-link to="/sign-in"> Login </router-link> |
+    </nav>
+    <router-view />
+  </div>
+</template>
+```
 
 And this is the result. It’s not the prettiest, but it has all the functionality we need for this example. We can click around and access our different pages.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-7.png)One thing to note is that since we haven’t set up authentication, we can** access our feed page before we even log in!**So lets fix this.
+![](img/navigation-ss.png)
+
+One thing to note is that since we haven’t set up authentication, we can **access our feed page before we even log in!**
+
+So lets fix this.
 
 ## Adding Firebase to Vue3
 
@@ -133,11 +182,37 @@ With all of the different components of our application created, we can get to t
 
 To do this, we can use the [Firebase npm package](https://www.npmjs.com/package/firebase). Let’s go back to our terminal and add it.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Installing Firebase</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="6"></precode></div></section>
+```bash
+npm install firebase
+```
 
 With this installed, we can easily add it to our `main.js `file. Inside, let’s import our Firebase npm package.Then let’s grab that configuration code that Firebase generated a few steps ago, and we can just copy and paste it into our `main.js` file.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">main.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="7"></precode></div></section>
+```js{}[main.js]
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import firebase from "firebase";
+
+/* code from our Firebase console */
+var firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const app = createApp(App);
+
+app.use(router);
+
+app.mount("#app");
+```
 
 **And that’s all we need to add Firebase into our project! **Now, let’s see how to use its authentication features in our Vue app.
 
@@ -147,13 +222,31 @@ Firebase gives us [several different options for user authentication](https://fi
 
 So in our Firebase console, let’s navigate to the authentication tab and make sure that the email/password option is enabled.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-8.png)Okay – now we’re ready to create our first user.
+![](img/firebase-auth.png)
+
+Okay – now we’re ready to create our first user.
 
 ### User registration
 
 For registration, we’re going to be working with our `Register.vue` component. Let’s just add a text input for email, a password input, and a submit button that calls a `createAccount` method. We’ll be using v-model to connect our inputs to our Javascript data.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Register.vue - base</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="8"></precode></div></section>
+```vue{}[Register.vue]
+<template>
+  <h1>Create an Account</h1>
+  <p><input type="text" placeholder="Email" v-model="email" /></p>
+  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p><button @click="register">Submit</button></p>
+</template>
+
+<script setup>
+  import { ref } from 'vue'
+  import firebase from 'firebase'
+  const email = ref('')
+  const password = ref('')
+  const register = () => {
+  }
+</script>
+```
 
 If this syntax looks unfamiliar to you, check out this video on the experimental script setup syntax.
 
@@ -165,15 +258,46 @@ This method takes our email and password values and then returns a Promise, whic
 
 If our account is successfully created, we’re going to log the account information and then route the user to the `/feed` page. If there’s some error, we’ll just catch it and print it out.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Register.vue - base</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="9"></precode></div></section>
+```vue{}[Register.vue]
+<template>
+  <h1>Create an Account</h1>
+  <p><input type="text" placeholder="Email" v-model="email" /></p>
+  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p><button @click="register">Submit</button></p>
+</template>
+
+<script setup>
+  import { ref } from 'vue'
+  import firebase from 'firebase'
+  import { useRouter } from 'vue-router' // import router
+  const email = ref('')
+  const password = ref('')
+  const router = useRouter() // get a reference to our vue router
+  const register = () => {
+    firebase
+      .auth() // get the auth api
+      .createUserWithEmailAndPassword(email.value, password.value) // need .value because ref()
+      .then((data) => {
+        console.log('Successfully registered!');
+        router.push('/feed') // redirect to the feed
+      })
+      .catch(error => {
+        console.log(error.code)
+        alert(error.message);
+      });
+  }
+</script>
+```
 
 Let’s try this out and see what happens.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-9.png)If we type a valid **email address and a password at least 6 characters long**, we should see our message in our console after submitting.
+If we type a valid **email address and a password at least 6 characters long**, we should see our message in our console after submitting.
 
 And if we go to our Firebase console, we should see our new account in our database!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-10.png)Exciting!!
+![](img/firebase-auth-console.png)
+
+Exciting!!
 
 Right after creating an account, we are automatically logged in, and the account information is stored in `firebase.auth().currentUser`. By default, this is saved in local storage to create some persistence across different sessions (e.g. if you open the app in another tab, you’ll still be logged in).
 
@@ -185,31 +309,97 @@ Inside `SignIn.vue`, let’s just copy and paste the `Register.vue` component th
 
 The one change we have to make is instead of calling the `createUserWithEmailAndPassword` method, we use `signInWithEmailAndPassword`. Other than that, it should work exactly the same.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">SignIn.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="10"></precode></div></section>
+```vue{}[SignIn.vue]
+<template>
+  <h1>Login to Your Account</h1>
+  <p><input type="text" placeholder="Email" v-model="email" /></p>
+  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p><button @click="signIn">Submit</button></p>
+</template>
+
+<script setup>
+  import { ref } from 'vue'
+  import firebase from 'firebase'
+  import { useRouter } from 'vue-router' // import router
+  const email = ref('')
+  const password = ref('')
+  const router = useRouter() // get a reference to our vue router
+  const signIn = () => { // we also renamed this method
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email.value, password.value) // THIS LINE CHANGED
+      .then((data) => {
+        console.log('Successfully logged in!');
+        router.push('/feed') // redirect to the feed
+      })
+      .catch(error => {
+        console.log(error.code)
+        alert(error.message);
+      });
+  }
+</script>
+```
 
 Awesome! Now we can create a new account and then sign in to that account.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-11.png)One feature we can add here is displaying some simple error messages if something goes wrong like:
+One feature we can add here is displaying some simple error messages if something goes wrong like:
 
 -   We pass an invalid email
-
-<!-- -->
-
 -   We pass a valid email, but there is no associated account for it
-
-<!-- -->
-
 -   Our password is incorrect
-
-<!-- -->
 
 We can capture these cases inside of our catch block. Firebase Authentication has **four error codes **for the `signInWithEmailAndPassword` method that can be accessed via `error.code`.
 
-`auth/invalid-email`Thrown if the email address is not valid.`auth/user-not-found`Thrown if there is no user corresponding to the given email.`auth/wrong-password`Thrown if the password is invalid for the given email, or the account corresponding to the email does not have a password set.`auth/user-disabled`Thrown if the user corresponding to the given email has been disabled (we’re not using this one)
+-   `auth/invalid-email` - Thrown if the email address is not valid.
+-   `auth/user-not-found` - Thrown if there is no user corresponding to the given email.
+-   `auth/wrong-password` - Thrown if the password is invalid for the given email, or the account corresponding to the email does not have a password set.- `auth/user-disabled` - Thrown if the user corresponding to the given email has been disabled (we’re not using this one)
 
 We can easily display some error messages with a paragraph element, reactive message property, and a **switch block depending on the error code**.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">SignIn.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="11"></precode></div></section>
+```vue{}[SignIn.vue]
+<template>
+  <h1>Login to Your Account</h1>
+  <p><input type="text" placeholder="Email" v-model="email" /></p>
+  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p v-if="errMsg">{{ errMsg }}</p>
+  <p><button @click="signIn">Submit</button></p>
+</template>
+
+<script setup>
+  import { ref } from 'vue'
+  import firebase from 'firebase'
+  import { useRouter } from 'vue-router' // import router
+  const email = ref('')
+  const password = ref('')
+  const errMsg = ref() // ERROR MESSAGE
+  const router = useRouter() // get a reference to our vue router
+  const signIn = () => { // we also renamed this method
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email.value, password.value) // THIS LINE CHANGED
+      .then((data) => {
+        console.log('Successfully logged in!');
+        router.push('/feed') // redirect to the feed
+      })
+      .catch(error => {
+        switch (error.code) {
+          case 'auth/invalid-email':
+              errMsg.value = 'Invalid email'
+              break
+          case 'auth/user-not-found':
+              errMsg.value = 'No account with that email was found'
+              break
+          case 'auth/wrong-password':
+              errMsg.value = 'Incorrect password'
+              break
+          default:
+              errMsg.value = 'Email or password was incorrect'
+              break
+        }
+      });
+  }
+</script>
+```
 
 ### Logging out a User
 
@@ -219,11 +409,62 @@ Let’s add another button to our navigation bar that calls a `signOut` method. 
 
 For now, when our button is clicked, we just want to call our `signOut` method.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="12"></precode></div></section>
+```vue{}[App.vue]
+<template>
+  <div>
+    <nav>
+      <router-link to="/"> Home </router-link> |
+      <router-link to="/feed"> Feed </router-link> |
+      <span v-if="isLoggedIn"
+        >>
+        <button @click="signOut">Logout</button>
+      </span>
+      <span v-else>
+        <router-link to="/register"> Register </router-link> |
+        <router-link to="/sign-in"> Login </router-link>
+      </span>
+    </nav>
+    <router-view />
+  </div>
+</template>
+
+<script setup>
+  import { ref, watchEffect } from 'vue' // used for conditional rendering
+  import firebase from 'firebase'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+  const isLoggedIn = ref(true)
+  // runs after firebase is initialized
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        isLoggedIn.value = true // if we have a user
+      } else {
+        isLoggedIn.value = false // if we do not
+      }
+  })
+  const signOut = () => {
+    firebase.auth().signOut()
+    router.push('/')
+  }
+</script>
+
+<style>
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+</style>
+```
 
 As soon as we hit sign out, we are no longer logged in. This also means that our conditional rendered content in our navbar will all change to the logged-out state.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-12.png)### Verifying Logged In Status
+![](img/logout.gif)
+
+### Verifying Logged In Status
 
 To check if a user is logged in, we can again use the `firebase.auth().onAuthStateChanged `method. This will either give us an object if the user is logged in OR null if there is no user logged in.
 
@@ -235,23 +476,49 @@ So inside our `Feed.vue `page, which is the one we want to be limited to logged-
 
 We also want to make sure to remove our `authListener` whenever our component is unmounted.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Feed.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="13"></precode></div></section>
+```vue{}[Feed.vue]
+<template>
+  <h1>Feed</h1>
+  <h3>This page is for users only</h3>
+</template>
+
+<script setup>
+  import firebase from 'firebase'
+  import { useRouter } from 'vue-router'
+  import { onBeforeUnmount } from 'vue'
+  const router = useRouter()
+  const authListener = firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) { // not logged in
+          alert('you must be logged in to view this. redirecting to the home page')
+          router.push('/')
+      }
+  })
+  onBeforeUnmount(() => {
+      // clear up listener
+      authListener()
+  })
+</script>
+```
 
 Alright – let’s see this in action. Let’s make sure that we’re logged out and try to access our feed page.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-13.png)Now, if we log in and go back to `/feed`, it will load properly because we actually have a logged in user object exists!
+![](img/demo-unauth.gif)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-14.png)Awesome. The fact that Firebase authentication comes with this** persistent user data built-in** makes it super easy for us to manage sessions.
+Now, if we log in and go back to `/feed`, it will load properly because we actually have a logged in user object exists!
+
+![](img/demo-auth.gif)
+
+Awesome. The fact that Firebase authentication comes with this** persistent user data built-in** makes it super easy for us to manage sessions.
 
 We can also use this logged-in status to only display the navigation link to the Feed when the user is logged in using the same `isLoggedIn` data property.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue - conditionally render Feed Link</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="14"></precode></div></section>
+```markup
+<span v-if="isLoggedIn">
+        <router-link to="/feed"> Feed </router-link> |
+</span>
+```
 
 Now, our router-link for the `/feed` page will conditionally render depending on the authentication state.
-
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-15.png)
-
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/a-vue-firebase-authentication-tutorial-vue-3-and-firebase-16.png)**There you go! You have a working authentication system**
 
 ## Final Thoughts
 
