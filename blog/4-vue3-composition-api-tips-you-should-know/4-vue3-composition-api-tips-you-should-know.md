@@ -9,13 +9,13 @@ category: Dev Tips
 
 With Vue 3 Alpha out, many developers are trying out the new changes – the biggest one being the Composition API.
 
-I’ve spent some time playing around with the new Composition API and learning how to implement it. Here are some things that took a little bit of time to figure out. Hopefully, it saves you some set up time.
+I’ve spent some time playing around with the new Composition API and learning how to implement it. Here are some things that took some time to figure out. Hopefully, it saves you some setup time.
 
-By the end of this article, you should know a little bit more about the Composition API and how you can implement it into your projects.
+By the end of this article, you should know more about the Composition API and how you can implement it in your projects.
 
 ## 1\. Use it properly to stay organized
 
-The main benefit of the Composition API is the ability to more efficiently organize and reuse code. Previously, in the Options API, code for a single feature would be separated across difference component options. Now, it’s all in one place.
+The main benefit of the Composition API is the efficiently organizing and reusing code. In the Options API, code for a single feature could be separated across different component options. Now, it’s all in one place.
 
 ![](img/composition-api.png)
 
@@ -148,7 +148,7 @@ export default {
 
 ## Conclusion
 
-New [best practices](https://learnvue.co/2020/01/12-vuejs-best-practices-for-pro-developers/), techniques, and design patterns will definitely emerge in the future when Vue3 is officially out. But for now, these are just a few of the things I wish I knew when I started playing around with the Composition API.
+New [best practices](https://learnvue.co/2020/01/12-vuejs-best-practices-for-pro-developers/), techniques, and design patterns will emerge in the future when Vue3 is officially out. But for now, these are just a few of the things I wish I knew when I started playing around with the Composition API.
 
 Hopefully you learned something and feel more comfortable with the new changes.
 
