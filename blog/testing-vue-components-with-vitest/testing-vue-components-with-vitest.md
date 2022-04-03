@@ -4,7 +4,7 @@ title: Testing Vue Components with Vitest
 tags: example, test, LearnVue
 category: Essentials
 createdDate: 2022/03/27
-snippet:
+snippet: Testing Vue components is a crucial step to ensuring your frontend app is working as expected.
 videoLink:
 ---
 

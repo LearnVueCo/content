@@ -13,13 +13,17 @@ category: Full Tutorials
 
 For example, sites like Facebook and Linkedin use skeleton loading screens on their content.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-1.png)![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-2.png)In Vue3, the [introduction of suspense components](https://learnvue.co/2020/01/an-introduction-to-vuejs-suspense-components/) has made it really easy to add skeleton loaders.
+![](img/facebook-example.png)
+
+In Vue3, the [introduction of suspense components](https://learnvue.co/2020/01/an-introduction-to-vuejs-suspense-components/) has made it really easy to add skeleton loaders.
 
 For this example, I’ve recreated the [Medium author section](https://medium.com/@mattmaribojoc) using an asynchronous component, a skeleton loader, and Vue’s new suspense components.
 
 Here’s a quick screenshot of what we’ll be building!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-3.gif)Excited? Me too – let’s jump right in.
+![](img/demo.gif)
+
+Excited? Me too – let’s jump right in.
 
 ## How is our skeleton loading screen going to work?
 
@@ -39,31 +43,139 @@ First, let’s create our default `ProfileCard.vue` component that will display 
 
 Since this is an asynchronous component, we need to make our setup method an async method. We also want to create another async method that loads in our profile data using a `setTimeout` for demonstration purposes.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">ProfileCard.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+```js{}[ProfileCard.vue]
+import { ref } from 'vue'
+
+const loadUserData = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                name: 'Matt Maribojoc',
+                pic: 'https://cdn-images-1.medium.com/fit/c/100/100/2*EcZb9cndrhTF7_d74dv2Fg.png',
+                bio: 'I run a VueJS community over at https://learnvue.co, develop web sites, and post whatever I find cool on the Internet.',
+            })
+        }, 4000)
+    })
+}
+
+export default {
+    async setup() {
+        const userData = ref(await loadUserData())
+
+        return {
+            userData,
+        }
+    },
+}
+```
 
 If this looks completely confusing to you, check out our Composition API tutorial.
 
-Let’s get this working displaying our template. This is the code that I used and here are some [links](https://learnvue.co/wp-content/uploads/2020/04/img-border.png) to the border image.
+Let’s get this working displaying our template.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+```vue
+<template>
+    <div class="profile-card">
+        <div class="profile-image">
+            <img class="profile-image__border" src="../assets/img-border.png" />
+            <img class="profile-image__img" :src="userData.pic" />
+        </div>
+        <div class="profile-info">
+            <span> Written By </span>
+            <h3>{{ userData.name }}</h3>
+            <p>{{ userData.bio }}</p>
+        </div>
+    </div>
+</template>
+```
 
 Finally, let’s style it to make it look nice. These are the styles that I used.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">ProfileCard.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> css <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+```vue{}[ProfileCard.vue]
+<style>
+.profile-card {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    min-height: 150px;
+}
+
+.profile-card .profile-image__img {
+    width: 10%;
+    height: auto;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.profile-card .profile-image__border {
+    width: calc(10% + 20px);
+    height: auto;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.profile-info {
+    width: 85%;
+    float: right;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.profile-info span {
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 3px;
+}
+
+.profile-info h3 {
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #222;
+}
+
+.profile-info p {
+    line-height: 140%;
+    color: #666;
+}
+</style>
+```
 
 Now, our ProfileCard component should look like this.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-4.png)## Using Suspense Components to Render Fallback Content
+![](img/step-1.png)
+
+## Using Suspense Components to Render Fallback Content
 
 Now that we have an async component, we can use a suspense component to display fallback content.
 
 Inside some other component, we can use this code to build our suspense component.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
+```vue
+<template>
+    <Suspense>
+        <template #default>
+            <profile-card />
+        </template>
+        <template #fallback> Loading... </template>
+    </Suspense>
+</template>
+```
 
 Now, if we run our app, we’ll see that it says `Loading…` for a few seconds until our ProfileCard component resolves.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-5.gif)But this isn’t a skeleton loading screen! So let’s build that right now.
+![](img/suspense-example.gif)
+
+But this isn’t a skeleton loading screen! So let’s build that right now.
 
 ## Building our Skeleton Loading Screen
 
@@ -73,7 +185,21 @@ We will **reuse** some of the layout styles to ensure that our skeleton has the 
 
 Our template will look basically the same minus the content.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="4"></precode></div></section>
+```vue{}[ProfileCardSkeleton.vue]
+<template>
+    <div class="profile-card">
+        <div class="profile-image">
+            <img class="profile-image__border" src="../assets/img-border.png" />
+            <img class="profile-image__img" />
+        </div>
+        <div class="profile-info">
+            <span />
+            <h3 />
+            <p />
+        </div>
+    </div>
+</template>
+```
 
 Then, the only other thing we need is to add some scoped styles to add that gray background we’re looking for.
 
@@ -81,31 +207,67 @@ So for each element – which in this case is the profile image, span, h3, and p
 
 To do this, we just give each one its own height, width, and background-color.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> css <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="5"></precode></div></section>
+```vue
+<style scoped>
+.profile-card .profile-image__img {
+    width: 10%;
+    padding-top: 10%;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+
+.profile-info span {
+    min-width: 100px;
+    height: 16px;
+    display: inline-block;
+    background-color: #ddd;
+}
+
+.profile-info h3 {
+    content: ' ';
+    width: 250px;
+    height: 24px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+.profile-info p {
+    width: 80%;
+    background-color: #ddd;
+    height: 16px;
+    line-height: 140%;
+}
+</style>
+```
 
 You can play around with the values depending on your component to get it looking just right.
 
 To add this skeleton component into our project, we can replace our suspense fallback content with our new component.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="6"></precode></div></section>
+```vue{}[ParentComponent.vue]
+<template>
+    <Suspense>
+        <template #default>
+            <profile-card />
+        </template>
+        <template #fallback>
+            <profile-card-skeleton />
+        </template>
+    </Suspense>
+</template>
+```
 
 Looking back at our app, we’ll see that now, it’s the type of look that we’re aiming for. It shows a rough outline of our content until our page loads!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-6.gif)## Extra Features We Can Add
+![](img/skeleton-example.gif)
+
+## Extra Features We Can Add
 
 So now that we’ve built a skeleton loading screen – there are so many ways to add to this concept. We could,
 
 -   [Build reusable](https://learnvue.co/2020/01/12-vuejs-best-practices-for-pro-developers/) skeleton components for images, headings, paragraphs, etc
-
-<!-- -->
-
 -   Add more styles to make it feel more responsive
-
-<!-- -->
-
 -   Create skeleton loaders for more components
-
-<!-- -->
 
 But the one that we’re going to implement is a UI improvement to our skeleton loader. We’re going to make the background-color pulse between a light and drak gray.
 
@@ -115,15 +277,36 @@ We’ll do this using [CSS animations](https://learnvue.co/2020/02/vuejs-animati
 
 First, let’s create our keyframes and all we want to do is transition between two background colors.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> css <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="7"></precode></div></section>
+```css
+@keyframes pulse-bg {
+    0% {
+        background-color: #ddd;
+    }
+    50% {
+        background-color: #d0d0d0;
+    }
+    100% {
+        background-color: #ddd;
+    }
+}
+```
 
 Next, inside each of our elements, we want to replace our background-color property with our new animation. We can do that like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> css <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="8"></precode></div></section>
+```css
+.profile-card .profile-image__img {
+    width: 10%;
+    padding-top: 10%;
+    border-radius: 50%;
+    animation: pulse-bg 1s infinite;
+}
+```
 
 The final result is a very subtle touch, but it’s the little things like this that can really make your Vue app stand out.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/vue-skeleton-loading-screen-using-suspense-components-daily-vue-4-7.gif)## And there we go!
+![](img/demo.gif)
+
+## And there we go!
 
 We now have a really nice skeleton loader component using Vue3’s new suspense feature.
 

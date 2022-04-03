@@ -18,7 +18,9 @@ Ready? Let’s jump right in.
 
 ## [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-1.png)**If you download one VS Code extension from this list, it has to be Vetur.**
+![](img/vetur.png)
+
+**If you download one VS Code extension from this list, it has to be Vetur.**
 
 A Vue tooling kit for VS Code – it provides Vue specific syntax highlighting, snippets for common snippets, and so much more that every Vue developer needs.
 
@@ -28,7 +30,7 @@ There’s not really too much else to say about Vetur – just get it. It’ll m
 
 ## [ESLint Plugin VueJS](https://eslint.vuejs.org/)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-2.png)Most developers are familiar with ESLint – one of the most popular linter tools that helps keep your code consistent with best practices and readable across large codebases.
+Most developers are familiar with ESLint – one of the most popular linter tools that helps keep your code consistent with best practices and readable across large codebases.
 
 VueJS has its own ESLint Plugin to check the syntax of single file components. I think it’s one of the best tools for writing maintainable and scalable code.
 
@@ -40,17 +42,19 @@ ESLint can help you stay organized, and with increasing support for Vue3, you’
 
 ## [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-3.gif)This VSCode Extension by Sarah Drasner will save you so much time in development.
+This VSCode Extension by Sarah Drasner will save you so much time in development.
 
 It provides autofilled snippets for frequently used Vue use cases. In her own words…
 
-> [Vue VSCode Snippets] _focuses on developer ergonomics from the point of Vue of real world use. Included are the pieces I personally get sick of typing, and boilerplate that is helpful to stub out quickly._[Source](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets)
+Vue VSCode Snippets focuses on developer ergonomics from the point of Vue of real world use. Included are the pieces I personally get sick of typing, and boilerplate that is helpful to stub out quickly. [Source](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets)
 
 It’s really great for writing things like quick SFCs, Vue directives, and accessing lifecycle hooks really quickly.
 
 ## [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-4.png)Many VSCode Extensions for Vue Developers don’t really show their full potential until you get into large projects.
+![](img/bookmarks.png)
+
+Many VSCode Extensions for Vue Developers don’t really show their full potential until you get into large projects.
 
 This is exactly how Bookmarks works. This extension lets you to mark and name positions in your code. Then, you can jump between these different “bookmarks” to increase your development speed.
 
@@ -58,7 +62,9 @@ Gone are the days of meticulously scrolling up and down your file to find where 
 
 ## [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-5.png)Bracket Pair Colorizer does exactly what it says – it takes matching brackets and gives them unique matching colors.
+![](img/brackets.png)
+
+Bracket Pair Colorizer does exactly what it says – it takes matching brackets and gives them unique matching colors.
 
 While this may seem like a minor detail, it can really help you when trying to fix pesky nesting errors and also can help you when your linter is not working.
 
@@ -68,7 +74,9 @@ It’s definitely worth checking out.
 
 ## [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-6.gif)Auto Rename Tag is a useful VSCode extension that will help prevent errors in your template code.
+![](img/rename-tag.gif)
+
+Auto Rename Tag is a useful VSCode extension that will help prevent errors in your template code.
 
 Whenever you go to change one tag of an HTML bracket pair (either the opening or closing tag), Auto Rename Tag will – you guess it – automatically rename the other one.
 
@@ -76,7 +84,7 @@ This small optimization can help prevent so many errors, especially when you’r
 
 ## [NPM Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/the-7-best-vs-code-extensions-for-vue-developers-7.gif)NPM Intellisense autocompletes your npm modules whenever you write import statements in your Javascript.
+NPM Intellisense autocompletes your npm modules whenever you write import statements in your Javascript.
 
 This can save you time from remembering the exact name of an npm module. I’ve used it in many of my projects and it’s definitely just been something that I’ve become so accustomed to.
 

@@ -4,12 +4,11 @@ title: A Complete Guide to Vue Lifecycle Hooks - with Vue 3 Updates
 snippet: Lifecycle hooks in both Vue 2 and Vue 3 work very similarly - we still have access to the same hooks and we still want to use them for the same use cases.
 createdDate: 2020/12/26
 tags: essentials,lifecycle,vue3
-slug: how-to-use-lifecycle-hooks-in-vue3
 videoLink: https://youtube.com/v/xefB0ndqK0Y
 category: Essentials
 ---
 
-Lifecycle hooks in [both Vue 2 and Vue 3 ](https://learnvue.co/2020/02/building-the-same-component-in-vue2-vs-vue3)work very similarly – we still have access to the same hooks and we still want to use them for the same use cases.
+Lifecycle hooks in [both Vue 2 and Vue 3](https://learnvue.co/2020/02/building-the-same-component-in-vue2-vs-vue3) work very similarly – we still have access to the same hooks and we still want to use them for the same use cases.
 
 If our project uses the Options API, we don’t have to change any of the code for our Vue lifecycle hooks. This is because Vue 3 is designed to be compatible with prior releases of Vue.
 
@@ -23,23 +22,14 @@ Let’s go!
 
 First, let’s look at a diagram of the Vue 3 lifecycle hooks in both the Options API and Composition API. This should give a high level overview of what’s going on before we can dive down into the details.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-use-lifecycle-hooks-in-vue3-1.png)Essentially, each main Vue lifecycle event is separated into two hooks that are called right before that event and then right after. There are four main events (8 main hooks) that you can utilize in your Vue app.
+![](img/vue-lifecycle.png)
+
+Essentially, each main Vue lifecycle event is separated into two hooks that are called right before that event and then right after. There are four main events (8 main hooks) that you can utilize in your Vue app.
 
 -   Creation — runs on your component’s creation
-
-<!-- -->
-
 -   Mounting — runs when the DOM is mounted
-
-<!-- -->
-
 -   Updates — runs when reactive data is modified
-
-<!-- -->
-
 -   Destruction — runs right before your element is destroyed.
-
-<!-- -->
 
 ## Using our Vue Lifecycle Hooks in the Options API
 
@@ -47,7 +37,18 @@ With the Options API, our lifecycle hooks are exposed as options on our Vue inst
 
 For example, let’s say we wanted to access our `mounted()` and our `updated()` lifecycle hooks. It might look something like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+```vue
+<script>
+export default {
+    mounted() {
+        console.log('mounted!')
+    },
+    updated() {
+        console.log('updated!')
+    },
+}
+</script>
+```
 
 Simple enough, right?
 
@@ -57,101 +58,58 @@ Okay. Let’s move on to using Vue 3 Lifecycle hooks in the Composition API.
 
 In the Composition API, we have to import lifecycle hooks into our project before we can use them. This is to help keep projects as lightweight as possible.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+```js
+import { onMounted } from 'vue'
+```
 
 Excluding `beforeCreate` and `created` (which are replaced by the `setup` method itself), there are 9 of the Options API lifecycle hooks that we can access in our setup method
 
 -   `onBeforeMount` – called before mounting begins
-
-<!-- -->
-
 -   `onMounted` – called when component is mounted
-
-<!-- -->
-
 -   `onBeforeUpdate` – called when reactive data changes and before re-render
-
-<!-- -->
-
 -   `onUpdated` – called after re-render
-
-<!-- -->
-
 -   `onBeforeUnmount` – called before the Vue instance is destroyed
-
-<!-- -->
-
 -   `onUnmounted` – called after the instance is destroyed
-
-<!-- -->
-
 -   `onActivated` – called when a kept-alive component is activated
-
-<!-- -->
-
 -   `onDeactivated` – called when a kept-alive component is deactivated
-
-<!-- -->
-
 -   `onErrorCaptured` – called when an error is captured from a child component
-
-<!-- -->
 
 When we import them and access them in our code, it would look like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+```vue
+<script>
+import { onMounted } from 'vue'
+
+export default {
+    setup() {
+        onMounted(() => {
+            console.log('mounted in the composition api!')
+        })
+    },
+}
+</script>
+```
 
 ## Updating Vue 2 Code to Vue 3 Lifecycle Hooks
 
-This handy Vue 2 to Vue 3 lifecycle mapping is straight from the[ Vue 3 Composition API docs](https://vue-composition-api-rfc.netlify.com/api.html#watcheffect) and I think it’s one of the most useful ways to see exactly how things are going to be changing and how we can use them.
+This handy Vue 2 to Vue 3 lifecycle mapping is straight from the [Vue 3 Composition API docs](https://vue-composition-api-rfc.netlify.com/api.html#watcheffect) and I think it’s one of the most useful ways to see exactly how things are going to be changing and how we can use them.
 
--   `beforeCreate` \-> use `setup()`
-
-<!-- -->
-
--   `created` \-> use `setup()`
-
-<!-- -->
-
--   `beforeMount` \-> `onBeforeMount`
-
-<!-- -->
-
--   `mounted` \-> `onMounted`
-
-<!-- -->
-
--   `beforeUpdate` \-> `onBeforeUpdate`
-
-<!-- -->
-
--   `updated` \-> `onUpdated`
-
-<!-- -->
-
--   `beforeDestroy` \-> `onBeforeUnmount`
-
-<!-- -->
-
--   `destroyed` \-> `onUnmounted`
-
-<!-- -->
-
--   `errorCaptured` \-> `onErrorCaptured`
-
-<!-- -->
+-   `beforeCreate` -> use `setup()`
+-   `created` -> use `setup()`
+-   `beforeMount` -> `onBeforeMount`
+-   `mounted` -> `onMounted`
+-   `beforeUpdate` -> `onBeforeUpdate`
+-   `updated` -> `onUpdated`
+-   `beforeDestroy` -> `onBeforeUnmount`
+-   `destroyed` -> `onUnmounted`
+-   `errorCaptured` -> `onErrorCaptured`
 
 ## An In-Depth Look at Each Lifecycle Hook
 
 We now understand two important things:
 
 -   The different lifecycle hooks we can use
-
-<!-- -->
-
 -   How to use them in both the Options API and the Composition API
-
-<!-- -->
 
 Let’s take a deeper dive at each lifecycle hook and look at how they’re used, what kind of code we can write in each one, and the differences between them in the Options API and Composition API.
 
@@ -159,13 +117,24 @@ Let’s take a deeper dive at each lifecycle hook and look at how they’re used
 
 Creation hooks are the very first thing that runs in your program.
 
-### _beforeCreate() – Options API_
+### `beforeCreate()` – Options API
 
 Since the created hook is the thing that initializes all of the reactive data and events, `beforeCreate` does not have access to any of a component’s reactive data and events.
 
 Take the following code block for example:
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
+```js
+export default {
+    data() {
+        return {
+            val: 'hello',
+        }
+    },
+    beforeCreate() {
+        console.log('Value of val is: ' + this.val)
+    },
+}
+```
 
 The output value of `val` is `undefined` because data has not been initialized yet. You also cannot call your component methods in this method either.
 
@@ -173,11 +142,22 @@ If you want to see a full list of what is available, I’d recommend just runnin
 
 Using the `beforeCreate` hook is useful when you need some sort of logic/API call that does not need to be assigned to data. Because if we were to assign something to data now, it would be lost once the state was initialized.
 
-### _created() – Options API_
+### `created()` – Options API
 
 We now have access to the component’s data and events. So modifying the example from above to use `created` instead `beforeCreate` we see how the output changes.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="4"></precode></div></section>
+```js
+export default {
+    data() {
+        return {
+            val: 'hello',
+        }
+    },
+    created() {
+        console.log('Value of val is: ' + this.val)
+    },
+}
+```
 
 The output of this would be `Value of val is: hello` because we have initialized our data.
 
@@ -191,21 +171,61 @@ For the Vue 3 Lifecycle Hooks using the Composition API, both `beforeCreate` and
 
 The code we just wrote in the created lifecycle hook would be rewritten like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="5"></precode></div></section>
+```js
+import { ref } from 'vue'
+export default {
+    setup() {
+        const val = ref('hello')
+        console.log('Value of val is: ' + val.value)
+        return {
+            val,
+        }
+    },
+}
+```
 
 ## Mounting Hooks – Accessing the DOM
 
 These mounting hooks handle mounting and rendering the component. These are some of the most commonly used hooks in projects and applications.
 
-### _beforeMount() and onBeforeMount()_
+### `beforeMount()` and `onBeforeMount()`
 
 Called right before the component DOM is actually rendered and mounted. In this step, the root element does not exist yet. In the Options API, this can be accessed using `this.$el` . In the Composition API, you will have to use a `ref` on the root element in order to do this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="6"></precode></div></section>
+```js
+export default {
+    beforeMount() {
+        console.log(this.$el)
+    },
+}
+```
 
 The Composition component using refs would look like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="7"></precode></div></section>
+```vue
+<template>
+    <div ref="root">Hello World</div>
+</template>
+
+<script>
+import { ref, onBeforeMount } from 'vue'
+
+export default {
+    setup() {
+        const root = ref(null)
+        onBeforeMount(() => {
+            console.log(root.value)
+        })
+        return {
+            root,
+        }
+    },
+    beforeMount() {
+        console.log(this.$el)
+    },
+}
+</script>
+```
 
 Then, the corresponding script to try and access the ref.
 
@@ -213,37 +233,105 @@ Since, `app.$el` is not yet created, the output will be undefined.
 
 While it’s preferred that you use `created()` / `setup()` to perform your API calls, this is really the last step you should call them before it’s unnecessary late in the process because it’s right after created — they have access to the same component variables.
 
-### _mounted() and onMounted()_
+### `mounted()` and `onMounted()`
 
 Called right after the first render of the component. The element is now available allowing for direct DOM access.
 
 Once again, in the Options API, we can use `this.$el` to access our DOM and in the Composition API we need to use refs to access the DOM in our Vue lifecycle hooks.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="8"></precode></div></section>
+```js
+import { ref, onMounted } from 'vue'
+
+export default {
+    setup() {
+        /* Composition API */
+
+        const root = ref(null)
+
+        onMounted(() => {
+            console.log(root.value)
+        })
+
+        return {
+            root,
+        }
+    },
+    mounted() {
+        /* Options API */
+        console.log(this.$el)
+    },
+}
+```
 
 ## Update Hooks – Reactivity in the VueJS Lifecycle
 
 The updated lifecycle event is triggered whenever reactive data is modified, triggering a render update.
 
-### _beforeUpdate() and onBeforeUpdate()_
+### `beforeUpdate()` and `onBeforeUpdate()`
 
 Runs when the data is changed, but before the component is re-rendered. This is a good place to update the DOM manually before any changes happen. For example, you can remove event listeners.
 
 `beforeUpdate` could be useful for tracking the number of edits made to a component or even tracking the actions to create an “undo” feature.
 
-### _updated() and onUpdated()_
+### `updated()` and `onUpdated()`
 
 The updated methods call once the DOM has been updated. Here’s some starter code that uses both beforeUpdate and updated.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Vue Template</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="9"></precode></div></section>
+```vue
+<template>
+    <div>
+        <p>{{ val }} | edited {{ count }} times</p>
+        <button @click="val = Math.random(0, 100)">Click to Change</button>
+    </div>
+</template>
+```
 
 With either of the corresponding scripts.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="10"></precode></div></section>
+```vue
+<script>
+export default {
+    data() {
+        return {
+            val: 0,
+        }
+    },
+    beforeUpdate() {
+        console.log('beforeUpdate() val: ' + this.val)
+    },
+    updated() {
+        console.log('updated() val: ' + this.val)
+    },
+}
+</script>
+```
 
 OR
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="11"></precode></div></section>
+```js
+import { ref, onBeforeUpdate, onUpdated } from 'vue'
+
+export default {
+    setup() {
+        const count = ref(0)
+        const val = ref(0)
+
+        onBeforeUpdate(() => {
+            count.value++
+            console.log('beforeUpdate')
+        })
+
+        onUpdated(() => {
+            console.log('updated() val: ' + val.value)
+        })
+
+        return {
+            count,
+            val,
+        }
+    },
+}
+```
 
 These methods are useful, but for a lot of use cases we may want to consider using watchers to detect these data changes instead. Watchers are good because they give the old value and the new value of the changed data.
 
@@ -253,47 +341,152 @@ Another option is using computed values to change the state based on elements.
 
 The destruction hooks for a component are used in the process of removing a component and cleaning up all the loose ends. This is the time for [removing event listeners](https://learnvue.co/2020/01/a-vue-event-handling-cheatsheet-the-essentials/) and things that could lead to memory leaks if not properly processed.
 
-### _beforeUnmount() and onBeforeUnmounted()_
+### `beforeUnmount()` and `onBeforeUnmounted()`
 
 Because this is before the component starts to get torn down, this is the time to do most, if not all, of the clean up. At this stage, your component is still fully functional and nothing has been destroyed yet.
 
 An example of removing an event listener would look like this in the Options API.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Options API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="12"></precode></div></section>
+```js
+export default {
+    mounted() {
+        console.log('mount')
+        window.addEventListener('resize', this.someMethod)
+    },
+    beforeUnmount() {
+        console.log('unmount')
+        window.removeEventListener('resize', this.someMethod)
+    },
+    methods: {
+        someMethod() {
+            // do something
+        },
+    },
+}
+```
 
 And this in the Composition API
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="13"></precode></div></section>
+```js
+import { onMounted, onBeforeUnmount } from 'vue'
+
+export default {
+    setup() {
+        const someMethod = () => {
+            // do smth
+        }
+
+        onMounted(() => {
+            console.log('mount')
+            window.addEventListener('resize', someMethod)
+        })
+
+        onBeforeUnmount(() => {
+            console.log('unmount')
+            window.removeEventListener('resize', someMethod)
+        })
+    },
+}
+```
 
 One way to see this in action is to work in Vite, vue-cli, or any dev environment that supports hot reloading. When your code updates, some of your components will unmount and mount themselves..
 
-### _unmounted() and onUnmounted()_
+### `unmounted()` and `onUnmounted()`
 
 At this point, most of your component and its properties are gone so there’s not much you can do. Once again, I’d use print out some data to see what exactly is still around and if it could be useful for your project.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="14"></precode></div></section>
+```js
+import { onUnmounted } from 'vue'
+
+export default {
+    setup() {
+        /* Composition API */
+
+        onUnmounted(() => {
+            console.log('unmounted')
+        })
+    },
+    unmounted() {
+        /* Options API */
+        console.log('unmounted')
+    },
+}
+```
 
 ## Activation Hooks – Managing Keep-Alive Components
 
-A [keep-alive tag is a wrapper element for dynamic components](<https://learnvue.co/2019/12/an-overview-of-vue-keep-alive/ https://learnvue.co/2020/04/a-beautiful-parallax-scrolling-effect-in-vuejs-daily-vue-tips-2/ https://learnvue.co/2020/01/getting-smart-with-vue-form-validation-vuelidate-tutorial/ https://learnvue.co/2020/01/build-a-custom-vuejs-tag-input-in-under-10-minutes/ https://learnvue.co/ https://learnvue.co/2020/02/building-the-same-component-in-vue2-vs-vue3/ https://learnvue.co/2020/01/4-vue3-composition-api-tips-you-should-know/ https://learnvue.co/2019/12/8-free-vue-icon-libraries-to-pretty-up-your-web-app/ https://learnvue.co/2020/02/how-and-why-to-use-wrapper-components-in-vue3/ https://learnvue.co/2020/04/animated-active-menu-highlights-in-vuejs-daily-vue-tips-1/ https://learnvue.co/2020/03/extract-and-reuse-logic-in-the-vue-composition-api/ https://learnvue.co/2020/01/7-simple-vuejs-tips-you-can-use-to-become-a-better-developer/ https://learnvue.co/2019/12/what-you-need-to-know-about-vue3-in-2020/ https://learnvue.co/2020/01/an-introduction-to-vuejs-suspense-components/ https://learnvue.co/2020/01/creating-your-first-vuejs-custom-directive/ https://learnvue.co/2020/09/a-quick-vue3-infinite-scrolling-component-daily-vue-tips-4/ https://learnvue.co/2020/09/an-introduction-to-vue-teleport-a-new-feature-in-vue3/ https://learnvue.co/2020/03/7-great-vue3-tutorials-and-resources-to-start-learning-today/ https://learnvue.co/2020/01/how-to-use-vuejs-filters-to-write-better-code/ https://learnvue.co/2020/03/using-vue-watcheffect-to-track-reactive-dependencies/ https://learnvue.co/2020/09/how-to-deploy-your-vue-app-to-github-pages/>). It stores a cached reference to inactive components so that Vue does not have to create an entirely new instance every time a dynamic component changes.
+A keep-alive tag is a wrapper element for dynamic components.
+
+It stores a cached reference to inactive components so that Vue does not have to create an entirely new instance every time a dynamic component changes.
 
 For this specific use case, Vue gives us two lifecycle hooks
 
-### _activated() and onActivated()_
+### `activated()` and `onActivated()`
 
-This method is called whenever a kept-alive dynamic component is “reactivated” – meaning that it is now the active view of the dynamic component.
+This method is called whenever a kept-alive dynamic component is "reactivated" – meaning that it is now the active view of the dynamic component.
 
 For example, if we are using keep-alive components to manage different tab views, every time we toggle between tabs, the current tab will run this activated hook.
 
-Let’s say we have the following [dynamic component setup ](https://learnvue.co/2020/01/an-overview-of-vuejs-dynamic-components/)using the keep-alive wrapper.
+Let’s say we have the following [dynamic component setup](https://learnvue.co/2020/01/an-overview-of-vuejs-dynamic-components/) using the keep-alive wrapper.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="15"></precode></div></section>
+```vue
+<template>
+    <div>
+        <span @click="tabName = 'Tab1'">Tab 1 </span>
+        <span @click="tabName = 'Tab2'">Tab 2</span>
+        <keep-alive>
+            <component :is="tabName" class="tab-area" />
+        </keep-alive>
+    </div>
+</template>
+
+<script>
+import Tab1 from './Tab1.vue'
+import Tab2 from './Tab2.vue'
+
+import { ref } from 'vue'
+
+export default {
+    components: {
+        Tab1,
+        Tab2,
+    },
+    setup() {
+        /* Composition API */
+        const tabName = ref('Tab1')
+
+        return {
+            tabName,
+        }
+    },
+}
+</script>
+```
 
 Inside our `Tab1.vue` component, we can access our activation hook like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="16"></precode></div></section>
+```vue
+<template>
+    <div>
+        <h2>Tab 1</h2>
+        <input type="text" placeholder="this content will persist!" />
+    </div>
+</template>
 
-### _deactivated() and onDeactivated()_
+<script>
+import { onActivated } from 'vue'
+
+export default {
+    setup() {
+        onActivated(() => {
+            console.log('Tab 1 Activated')
+        })
+    },
+}
+</script>
+```
+
+### `deactivated()` and `onDeactivated()`
 
 As you may guess, this is called when a kept alive component is no longer the active view of a dynamic component.
 
@@ -301,27 +494,45 @@ This hook can be useful for use cases like saving user data when a specific view
 
 We can capture the hook like this.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Composition API</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="17"></precode></div></section>
+```js
+import { onActivated, onDeactivated } from 'vue'
+
+export default {
+    setup() {
+        onActivated(() => {
+            console.log('Tab 1 Activated')
+        })
+
+        onDeactivated(() => {
+            console.log('Tab 1 Deactivated')
+        })
+    },
+}
+```
 
 Now, when we toggle between the tabs – each dynamic component’s state will be cached and saved.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-use-lifecycle-hooks-in-vue3-2.gif)Great!
+![](img/keep-alive.gif)
+
+Great!
 
 ## Vue 3 Debug Hooks
 
 Vue 3 gives us two hooks that we can use for debugging purposes. They are:
 
 -   `onRenderTracked`
-
-<!-- -->
-
 -   `onRenderTriggered`
-
-<!-- -->
 
 Both of these events take a DebuggerEvent that allows us to tell what is causing a re-render in our Vue instance.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="18"></precode></div></section>
+```js
+export default {
+    onRenderTriggered(e) {
+        debugger
+        // inspect which dependency is causing the component to re-render
+    },
+}
+```
 
 ## Conclusion
 

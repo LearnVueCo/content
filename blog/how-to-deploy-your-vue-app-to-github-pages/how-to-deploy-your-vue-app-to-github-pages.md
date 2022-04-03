@@ -4,7 +4,6 @@ title: How To Deploy Your Vue App to Github Pages
 snippet: GitHub Pages is a great free option to deploy your Vue application. It’s a static site hosting service that takes files straight from a repository on GitHub.
 createdDate: 2020/09/01
 tags: deployment,github
-slug: how-to-deploy-your-vue-app-to-github-pages
 videoLink: https://youtube.com/v/yo2bMGnIKE8
 category: Top Tools
 ---
@@ -16,20 +15,9 @@ A great part about Github Pages is that it’s pretty easy to set up once you kn
 In this tutorial, we’re going to cover:
 
 -   The basics of Github Pages
-
-<!-- -->
-
 -   Setting up a Vue project to work with Github Pages
-
-<!-- -->
-
 -   Deploying a Vue project
-
-<!-- -->
-
 -   Configuring Vue Router in this deployment environment
-
-<!-- -->
 
 A lot of these steps are based on [this great article](https://medium.com/@Roli_Dori/deploy-vue-cli-3-project-to-github-pages-ebeda0705fbd) by Roland, in combination with some of the tips I found while deploying a Vue3 demo space.
 
@@ -61,9 +49,15 @@ If we don’t have this configuration, our deployed site will not properly load 
 
 We want to route it to the URL path of our deployed Github Pages site, which we can find in our repository settings.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-deploy-your-vue-app-to-github-pages-1.png)We want to take the path found in that red box – anything after github.io – and use it in our `vue.config.js `like this.
+![](img/pages-url.png)
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">vue.config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+We want to take the path found in that red box – anything after github.io – and use it in our `vue.config.js `like this.
+
+```js{}[vue.config.js]
+module.exports = {
+  publicPath: process.env.NODE_ENV === "production" ? "/REPO_NAME/" : "/",
+};
+```
 
 Now, when we deploy our site, all the static assets should be loaded from the correct paths.
 
@@ -83,11 +77,15 @@ This commits our changes to the master branch so that we can create a `dist` sub
 
 This step makes gh-pages a subtree of our master branch. The [prefix option](https://gist.github.com/SKempin/b7857a6ff6bddb05717cc17a44091202) specifies the folder that we want for our the subtree. If we take a look at our gh-pages branch, we will see that it is equivalent to being the root of the dist folder.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-deploy-your-vue-app-to-github-pages-2.png)### Step 5. Done!
+![](img/subtree-commit.png)
+
+### Step 5. Done!
 
 In a few minutes, Github Pages should refresh with your newest repository changes, and you should be able to see your Vue project online. Exciting!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-deploy-your-vue-app-to-github-pages-3.png)## Tip – Handling Vue Router with a Custom 404 Page
+![](img/deployed-site.png)
+
+## Tip – Handling Vue Router with a Custom 404 Page
 
 One thing, I discovered when trying to set up my Github Pages site, is that working with [Vue Router](https://learnvue.co/2020/04/a-first-look-at-vue-router-in-vue3/) gets a little tricky.
 

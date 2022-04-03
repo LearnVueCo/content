@@ -188,7 +188,7 @@ For starters, some questions you should be able to answer are:
 
 There are thousands of little tricks that help make your code more efficient. But I’m sure if you’re reading this article, you’re interested in learning them!
 
-# Conclusion
+## Conclusion
 
 This is by no means a comprehensive list of VueJS tips. These are just some of the ones that I personally find the most useful. Some of these tips took me ages of developing in Vue to discover, so I thought I could share that knowledge with all of you.
 

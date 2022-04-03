@@ -1,34 +1,98 @@
 ---
 author: Matt Maribojoc
-title: How to Manage VueJS Mixins
+title: How to Manage Vue Mixins
 snippet: When your Vue project starts to grow you might find yourself copying and pasting the same data methods and watchers over and over again if you have similar…
 createdDate: 2019/12/17
 tags: basics,getting started,mixins,vue2
-slug: how-to-manage-mixins-in-vuejs
 category: Full Tutorials
 ---
 
-When your Vue project starts to grow, you might find yourself copying and pasting the **same** data, methods, and [watchers](https://learnvue.co/2019/12/a-simple-vue-watcher-tutorial-for-beginners/) over and over again if you have similar components. Sure — you could write all of these separate files as a single component and use props to customize them. However, using that many props can easily get **confusing and cluttered**. To avoid this daunting task, most people just continue adding duplicate code. The best Vue developers will know that there is a better solution – VueJS Mixins.
+When your Vue project starts to grow, you might find yourself copying and pasting the **same** data, methods, and [watchers](https://learnvue.co/2019/12/a-simple-vue-watcher-tutorial-for-beginners/) over and over again if you have similar components.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/how-to-manage-mixins-in-vuejs-1.com/max/900/0*EBTwokY-nMyAvDAQ)## The Solution – VueJS Mixins
+Sure — you could write all of these separate files as a single component and use props to customize them.
+
+However, using that many props can easily get **confusing and cluttered**.
+
+To avoid this daunting task, most people just continue adding duplicate code. The best Vue developers will know that there is a better solution – Vue Mixins.
+
+## The Solution – VueJS Mixins
 
 Thankfully, the VueJS gods blessed us with Mixins — one of the easiest ways to share **reusable** code between different components. Mixin objects can use **any of the component options** — data, mounted, created, update, etc — and when a component uses a mixin, all of the information in the mixin object will be, well, mixed in to the component. Then, the component has access to all of the options in the mixin as if you declared it in the component itself. This will make a lot more sense after an example.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">mixin.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+```vue
+<script>
+export default {
+    data() {
+        return {
+            msg: 'Hello World',
+        }
+    },
+    created: function () {
+        console.log('Printing from the Mixin')
+    },
+    methods: {
+        displayMessage: function () {
+            console.log('Now printing from a mixin function')
+        },
+    },
+}
+</script>
+```
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">main.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+```js{}[main.js]
+import mixin from "./mixin.js";
+new Vue({
+  mixins: [mixin],
+  created: function () {
+    console.log(this.$data);
+    this.displayMessage();
+  },
+});
+// EXPECTED OUTPUT
+// => "Printing from the Mixin"
+// => {msg: ‘Hello World’}
+// => "Now printing from a mixin function"
+```
 
-As you can see, after using the mixin, the component contains all of the data in the mixin, and it is accessed by using `this`*. *You can also define the mixin using a **variable** instead of a separate file. Honestly, that’s most of what you need to know about mixins. But I think it’s useful to know more about certain use cases and corner cases.
+As you can see, after using the mixin, the component contains all of the data in the mixin, and it is accessed by using `this`*. *You can also define the mixin using a **variable** instead of a separate file.
+
+Honestly, that’s most of what you need to know about mixins. But I think it’s useful to know more about certain use cases and corner cases.
 
 Also, it’s important to note that when using [VueJS lifecycle](https://learnvue.co/2019/12/a-beginners-guide-to-vuejs-lifecycle-hooks/) hooks, the mixin hook will be called before your component’s hook.
 
 ## What happens if there’s a naming conflict?
 
-A naming **conflict **between a component and its mixin can happen when there is data, methods, or any component options in the mixin that has the same name as an option in the component. If this occurs, the property in the **component itself** will take precedence. For example, if there is a `title` data variable in both the component and mixin — `this.title` would return the value defined in the component. In code, this looks like:
+A naming **conflict** between a component and its mixin can happen when there is data, methods, or any component options in the mixin that has the same name as an option in the component.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">mixin.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+If this occurs, the property in the **component itself** will take precedence.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">main.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
+For example, if there is a `title` data variable in both the component and mixin — `this.title` would return the value defined in the component. In code, this looks like:
+
+```vue
+<script>
+export default {
+    data() {
+        title: 'Mixin'
+    },
+}
+</script>
+```
+
+```vue
+<script>
+import mixin from './mixin.js'
+export default {
+   mixins: [mixin],
+   data () {
+      title: ‘Component’
+   },
+   created: function () {
+      console.log(this.title)
+   }
+}
+// Output: "Component"
+</script>
+```
 
 As you can see, the data from the internal component took precedence over the default mixin value.
 

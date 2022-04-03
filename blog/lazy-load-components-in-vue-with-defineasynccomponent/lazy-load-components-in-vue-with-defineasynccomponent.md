@@ -4,7 +4,6 @@ title: Lazy Load Components in Vue with defineAsyncComponent
 snippet: Using Vue 3’s defineAsyncComponent feature lets us lazy load components - meaning they’re only loaded when they’re needed.
 createdDate: 2021/06/28
 tags: composition api,lazy load,vue 3
-slug: lazy-load-components-in-vue-with-defineasynccomponent
 videoLink: https://youtube.com/v/zbXREIYNZHE
 category: Dev Tips
 ---
@@ -13,25 +12,56 @@ Using Vue 3’s `defineAsyncComponent` feature lets us lazy load components. Thi
 
 This is a great way to** improve initial page loads** as our app will be loaded in smaller chunks rather than having to load every single component when the page loads.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-1.jpeg)In this tutorial, we’ll learn all about `defineAsyncComponent` and look at an example that defers the loading of a popup until it’s required by our app.
+![](https://www.imperva.com/learn/wp-content/uploads/sites/13/2019/01/Lazy-Loading-2.jpg)
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-2.png)Okay – let’s get into it.
+In this tutorial, we’ll learn all about `defineAsyncComponent` and look at an example that defers the loading of a popup until it’s required by our app.
+
+![](img/demo.gif)
+
+Okay – let’s get into it.
 
 ## What is defineAsyncComponent
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6=""></h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+```js
+// SOURCE: https://v3.vuejs.org/guide/component-dynamic-async.html
+const AsyncComp = defineAsyncComponent(
+    () =>
+        new Promise((resolve, reject) => {
+            resolve({
+                template: '<div>I am async!</div>',
+            })
+        })
+)
+```
 
-[`defineAsyncComponent accepts a factory function that returns a Promise`](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0026-async-component-api.md). This Promise should `resolve` when we successfully get the component from the server and `reject` if something goes wrong.
+[defineAsyncComponent accepts a factory function that returns a Promise](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0026-async-component-api.md). This Promise should `resolve` when we successfully get the component from the server and `reject` if something goes wrong.
 
 To use it, we have to import it from Vue and then we can use it in the rest of script.
 
 We can also easily add Vue components from other files using an `import` inside of our factory function.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Basic Usage</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+```js
+import { defineAsyncComponent } from 'vue'
+
+// simple usage
+const LoginPopup = defineAsyncComponent(() =>
+    import('./components/LoginPopup.vue')
+)
+```
 
 This is the simplest way to use `defineAsyncComponent`, but we can also pass in a complete options object that configures several more advanced parameters.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">We Can Specify More Options</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+```js
+// with options
+
+const AsyncPopup = defineAsyncComponent({
+    loader: () => import('./LoginPopup.vue'),
+    loadingComponent: LoadingComponent /* shows while loading */,
+    errorComponent: ErrorComponent /* shows if there's an error */,
+    delay: 1000 /* delay in ms before showing loading component */,
+    timeout: 3000 /* timeout after this many ms */,
+})
+```
 
 Personally, I find myself using that first, shorter syntax more often and it works for most of my use cases, but it’s entirely up to you.
 
@@ -45,25 +75,128 @@ We don’t need our app to load this component whenever our app loads because** 
 
 So here’s what our login component looks like, it just creates a popup by blacking out the rest of the screen with `position: fixed` and has a few inputs and a submit button.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">LoginPopup.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
+```vue{}[LoginPopup.vue]
+<template>
+  <div class="popup">
+    <div class="content">
+      <h4>Login to your account</h4>
+      <input type="text" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button>Log in</button>
+    </div>
+  </div>
+</template>
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-3.png)Instead of importing it and including it in our components options like we usually would…
+<script></script>
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="4"></precode></div></section>
+<style scoped>
+  .popup {
+     position: fixed;
+     width: 100%;
+     top: 0;
+     left: 0;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.2);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+  .content {
+    min-width: 200px;
+    width: 30%;
+    background: #fff;
+    height: 200px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  input[type="text"], input[type="password"] {
+     border: 0;
+     outline: 0;
+     border-bottom: 1px solid #eee;
+     width: 80%;
+     margin: 0 auto;
+     font-size: 0.5em;
+  }
+  button {
+    border: 0;
+    margin-top: 50px;
+    background-color:#8e44ad;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.5em;
+  }
+</style>
+```
+
+![](img/popup.png)
+
+Instead of importing it and including it in our components options like we usually would…
+
+```vue
+<template>
+    <!-- "Standard" way of doing things -->
+    <button @click="show = true">Login</button>
+    <login-popup v-if="show" />
+</template>
+
+<script>
+import LoginPopup from './components/LoginPopup.vue'
+export default {
+    components: { LoginPopup },
+    data() {
+        return {
+            show: false,
+        }
+    },
+}
+</script>
+```
 
 We can instead use `defineAsyncComponent` to only load it when it’s required (meaning the button is clicked and our `v-if` is toggled)
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">App.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="5"></precode></div></section>
+```vue
+<template>
+    <!-- Use defineAsyncComponent  -->
+    <button @click="show = true">Login</button>
+    <login-popup v-if="show" />
+</template>
 
-While this may look the same when we use our app, let’s Inspect _Element > Network_ to understand this small, yet important difference.
+<script>
+import { defineAsyncComponent } from 'vue'
+export default {
+    components: {
+        LoginPopup: defineAsyncComponent(() =>
+            import('./components/LoginPopup.vue')
+        ),
+    },
+    data() {
+        return {
+            show: false,
+        }
+    },
+}
+</script>
+```
 
-If we don’t use `defineAsyncComponent`, as soon as our page loads, we’ll see that our app is getting `LoginPopup.vue` from our server. While in this example, it may not make the biggest performance issue, it still slows down the load a little bit and if we have dozens of components doing this, it can really add up.
+While this may look the same when we use our app, let’s Inspect `Element > Network` to understand this small, yet important difference.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-4.png)However, if we look at the same tab using `defineAsyncComponent`, we’ll notice that when our page loads, `LoginPopup.vue` is nowhere to be seen. This is because it hasn’t been loaded yet.
+If we don’t use `defineAsyncComponent`, as soon as our page loads, we’ll see that our app is getting `LoginPopup.vue` from our server.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-5.png)But once we click our button and tell our app to show our popup, that’s when it’s loaded from the server and we can see it in the _Network_ tab.
+While in this example, it may not make the biggest performance issue, it still slows down the load a little bit and if we have dozens of components doing this, it can really add up.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-6.png)**This helps us achieve the best performance. **We only want to load the components needed on our page’s initial load. Components that are conditionally rendered are often not required when our page loads, so why make our app load them in?
+![](img/sync-perf.png)
+
+However, if we look at the same tab using `defineAsyncComponent`, we’ll notice that when our page loads, `LoginPopup.vue` is nowhere to be seen. This is because it hasn’t been loaded yet.
+
+![](img/async-perf-before-load.png)
+
+But once we click our button and tell our app to show our popup, that’s when it’s loaded from the server and we can see it in the `Network` tab.
+
+![](img/async-perf-loaded.png)
+
+**This helps us achieve the best performance.**
+
+We only want to load the components needed on our page’s initial load. Components that are conditionally rendered are often not required when our page loads, so why make our app load them in?
 
 ## How to use with an asynchronous setup function
 
@@ -75,21 +208,78 @@ In short, creating an async setup function is one option we have to make our com
 
 Here is our component with an async setup. It mimics an API call with a `setTimeout()`
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">LoginPopupWithAsyncSetup.vue</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> vue <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="6"></precode></div></section>
+```vue
+<template>
+    <div class="popup">
+        <div class="content">
+            <p>Loaded API: {{ article }}</p>
+            <h4>Login to your account</h4>
+            <input type="text" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Log in</button>
+        </div>
+    </div>
+</template>
+
+<script>
+const getArticleInfo = async () => {
+    // wait 3 seconds to mimic API call
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    const article = {
+        title: 'My Vue 3 Article',
+        author: 'Matt Maribojoc',
+    }
+    return article
+}
+export default {
+    async setup() {
+        const article = await getArticleInfo()
+        console.log(article)
+        return {
+            article,
+        }
+    },
+}
+</script>
+```
 
 We can import it in our component with or without `defineAsyncComponent`
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Ways to load our component</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="7"></precode></div></section>
+```js
+import LoginPopup from './components/LoginPopup.vue'
+
+// OR
+
+const LoginPopup = defineAsyncComponent(() =>
+    import('./components/LoginPopup.vue')
+)
+```
 
 But if we want this to render inside of our template, we need to wrap it in a Suspense element. This waits for our setup function to resolve before attempting to render our component.
 
-A neat feature of Suspense is that we can display fallback content using slots and templates. The fallback content will display until the setup function resolves and our component is ready to render._ Note that the v-if is moved from the component itself to our Suspense component so all fallback will display._
+A neat feature of Suspense is that we can display fallback content using slots and templates. The fallback content will display until the setup function resolves and our component is ready to render.
 
-<section class="relative p-3 overflow-hidden rounded-lg bg-accent mb-8" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0  left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between border-gray-500 border-b pb-2 mb-3" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Template Code for Suspense</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markup <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="fill-gray hover:fill-white transition duration-300 icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="8"></precode></div></section>
+> Note that the v-if is moved from the component itself to our Suspense component so all fallback will display.
+
+```vue
+<template>
+    <button @click="show = true">Login</button>
+    <Suspense v-if="show">
+        <template #default>
+            <login-popup />
+        </template>
+        <template #fallback>
+            <p>Loading...</p>
+        </template>
+    </Suspense>
+</template>
+```
 
 This is the result. A user will see “Loading…” and then after 3 seconds (the hard-coded value for our `setTimeout`), our component will render.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/lazy-load-components-in-vue-with-defineasynccomponent-7.png)**By default, all components we define using defineAsyncComponent are suspensible.**
+![](img/demo.gif)
+
+**By default, all components we define using defineAsyncComponent are suspensible.**
 
 This means if there is Suspense in a component’s parent chain, it’s treated as an async dependency of that Suspense. Our components loading, error, delay, and timeout options will be ignored and will be handled by Suspense instead.
 

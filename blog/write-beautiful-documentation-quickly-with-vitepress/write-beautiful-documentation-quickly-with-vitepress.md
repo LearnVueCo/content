@@ -21,7 +21,9 @@ In this quick tutorial, we’ll see how we can use Vitepress to rapidly create d
 
 Here’s what we’ll have at the end of our app.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-1.png)Excited?
+![](img/demo.png)
+
+Excited?
 
 Me too. Let’s get into it.
 
@@ -32,16 +34,8 @@ Vitepress is a Vue-powered static site generator built on top of Vite.
 Called “the little brother of Vuepress” [in its documentation](https://vitepress.vuejs.org/) (which uses Vitepress), it has some advantages over its counterpart.
 
 -   Built on Vite not Webpack so faster start times, hot-reloads, etc.
-
-<!-- -->
-
 -   Uses Vue 3 to reduce JS payload
-
-<!-- -->
-
 -   Lighterweight
-
-<!-- -->
 
 One reason that Vitepress is able to accomplish these goals is that it is much more opinionated and specific than Vuepress – which has gotten more complex over the years.
 
@@ -51,27 +45,44 @@ While it’s not intended to completely replace Vuepress as Vue’s static site 
 
 To get started with Vitepress, the first thing we want to do is create our directory.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">creating our project</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="0"></precode></div></section>
+```bash
+mkdir vite-hello-world
+cd vite-hello-world
+```
 
 Then, we want to initialize our package manager and add Vitepress – for this tutorial, I’m going to use `npm`.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">setting up npm</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="1"></precode></div></section>
+```bash
+npm init
+npm i --save-dev vitepress
+```
 
 Next, we’re going to want to add our Vitepress scripts to our package.json file.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">package.json</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> json <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="2"></precode></div></section>
+```json{}[package.json]
+{
+    "scripts": {
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:serve": "vitepress serve docs"
+    }
+}
+```
 
 Okay – let’s a `docs` folder and make our first markdown file.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">our first page!</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="3"></precode></div></section>
-
 Let’s run our application.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">alright - let's run it!</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="4"></precode></div></section>
+```bash
+mkdir docs
+echo '# Hello World' > docs/index.md
+```
 
 We’ve created our site! If we navigate over to `http://localhost:3000`, we’ll see our markdown file being rendered in a webpage!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-2.png)Exciting! Let’s start customizing our site and using more Vitepress features.
+![](img/our-first-page.png)
+
+Exciting! Let’s start customizing our site and using more Vitepress features.
 
 ## Customizing our Vitepress Site
 
@@ -81,17 +92,37 @@ Adding multiple pages to your Vitepress site is as easy as creating more markdow
 
 Let’s create a few pages and subdirectories in our project – our `docs/ `directory should now look like this.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-3.png)When Vitepress creates our SPA navigation, it uses the path of each markdown file to create a route. Additionally, files named `index.md` in any folder can also just be referenced by `/`.
+![](img/navigation.png)
+
+When Vitepress creates our SPA navigation, it uses the path of each markdown file to create a route. Additionally, files named `index.md` in any folder can also just be referenced by `/`.
 
 For example, our file structure translates to the following routes:
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">docs/index.md</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markdown <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="5"></precode></div></section>
+```markdown[docs/index.md]
+## Routing!
+
+[docs/index.md](/) -> /
+
+[docs/contact.md](/contact) -> /contact
+
+[about/index.md](/about/) -> /about/
+
+[about/our-story.md](/about/our-story) -> /about/our-story
+```
 
 In our markdown files, we have three ways of linking to routes. We can either use the base url, add `.md` or `.html` – all will properly link to the right component.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">docs/index.md</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markdown <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="6"></precode></div></section>
+```markdown{}[docs/index.md]
+### All these options work!
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-4.gif)### Adding a Navbar and Sidebar to our Site
+[docs/contact](/contact) |
+[docs/contact.md](/contact.md) |
+[docs/contact.html](/contact.html)
+```
+
+![](img/routing.gif)
+
+### Adding a Navbar and Sidebar to our Site
 
 Vitepress gives us a great default theme. It’s minimal, but powerful and easy to customize.
 
@@ -99,33 +130,72 @@ First, let’s add some navigation to our site with a sidebar and a navbar.
 
 To do this, we need to create a configuration file – we can do this inside a `/docs/.vitepress/` folder that will house our Vitepress specific files. Our file will be called `./vitepress/config.js` and just needs to export a JS object.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="7"></precode></div></section>
+```js{}[.vitepress/config.js]
+module.exports = {
+    title: 'Vitepress Tutorial', // appended to all page titles
+}
+```
 
 Inside this object, let’s add a property called `themeConfig` that looks something like this.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="8"></precode></div></section>
+```js{}[.vitepress/config.js]
+module.exports = {
+    // ...
+    themeConfig: {
+        nav: [],
+        sidebar: [],
+    },
+}
+```
 
 To add elements to our navbar, we just need to add objects to our `nav` array with the format `{ text: 'ANCHOR-TEXT', link: 'PATH' }`, let’s add a link to our home page, contact page, and about page.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="9"></precode></div></section>
+```js{}[.vitepress/config.js]
+module.exports = {
+    nav: [
+        { text: 'Home', link: '/' },
+        { text: 'About', link: '/about/' },
+        { text: 'Contact', link: '/contact' },
+    ],
+}
+```
 
 To add to our sidebar is exactly the same way. Let’s add links to some of our headers.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="10"></precode></div></section>
+```js{}[.vitepress/config.js]
+module.exports = {
+    sidebar: [{ text: 'Our Story', link: '/about/our-story' }],
+}
+```
 
 Going back to our browser, we can now see that Vitepress generates a pretty nice looking navbar and sidebar just from the few lines of configuration.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-5.png)One cool thing that we can do with Vitepress sidebars is to change the sidebar depending on what page we’re on.
+![](img/sidebar-and-nav-bar.png)
+
+One cool thing that we can do with Vitepress sidebars is to change the sidebar depending on what page we’re on.
 
 Let’s say that we want our home page to display its headings, but we want all our other pages to show the sidebar we just made.
 
 The first thing we have to do is create store our `our-story` sidebar as a variable.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="11"></precode></div></section>
+```js{}[.vitepress/config.js]
+const primarySidebar = [{ text: 'Our Story', link: '/about/our-story' }]
+```
 
 Back in our `themeConfig` object, we want to change our sidebar to an object where the property name is a path and the value is a sidebar array.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> javascript <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="12"></precode></div></section>
+```js{}[.vitepress/config.js]
+module.exports = {
+    // ...
+    sidebar: {
+        '/about/': primarySidebar, // everything in the /about/ subdirectory
+        '/contact': primarySidebar, // contact page
+
+        // we don't need to do anything to index
+        // because the default sidebar is created via page headings
+    },
+}
+```
 
 Now, if we check out site – we’ll see that our home page has a different sidebar than all the rest.
 
@@ -141,21 +211,35 @@ I’ll only be covering some of my most frequently used ones here. [Click here f
 
 When writing good documentation, code examples are vital. Vitepress provides a way to quickly add code blocks and also specify what programming language it’s using.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">/docs/index.md</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markdown <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="13"></precode></div></section>
+![](img/js.png)
+_docs/index.md_
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-6.png)### Table of Contents
+![](img/code-blocks.png)
+
+### Table of Contents
 
 Adding a table of contents can be another great way to give your Vue static site easy navigation
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">/docs/index.md</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markdown <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="14"></precode></div></section>
+```md
+[[toc]]
+```
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-7.png)### Github Style Tables
+![](img/toc.png)
+
+### Github Style Tables
 
 Tables in Vitepress can take a little getting used to, but the simplicity and the ability to change the alignment of your columns makes it valuable.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">.vitepress/config.js</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> markdown <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="15"></precode></div></section>
+```md
+| Headings      |   Are    |    Centered |
+| ------------- | :------: | ----------: |
+| left align    | centered | right align |
+| zebra striped |   rows   |        easy |
+```
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-8.png)## Markdown Frontmatter Configuration
+![](img/table.png)
+
+## Markdown Frontmatter Configuration
 
 Although we can use your `./vuepress/config.js` to create site-wide configurations, sometimes we’re going to need more control over individual pages.
 
@@ -163,11 +247,19 @@ Thankfully, we can control each page using a YAML block at the top of our markdo
 
 For example, let’s say we want to change the title and remove the sidebar from our Contact page.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">docs/contact</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> yaml <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="16"></precode></div></section>
+```md
+---
+title: Contact
+---
+
+# Contact
+```
 
 Navigating to our `https://localhost:3000/contact` – we can see that it works.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-9.png)There are a lot of different things we can configure here. [Check out the documentation for all of the Frontmatter options. ](https://vitepress.vuejs.org/guide/frontmatter.html)
+![](img/custom-frontmatter.png)
+
+There are a lot of different things we can configure here. [Check out the documentation for all of the Frontmatter options. ](https://vitepress.vuejs.org/guide/frontmatter.html)
 
 ## Deploying Your Vitepress App
 
@@ -175,15 +267,21 @@ We’ve already seen that we can create your local environment using `npm run do
 
 First, we’re going to want to build your app using the command
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">lets build our app</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="17"></precode></div></section>
+```bash
+npm run dev:build
+```
 
 The build output will by default go to `/docs/.vuepress/dist`. The dist folder for our example looks like this.
 
-![](https://dltqhkoxgn1gx.cloudfront.net/img/posts/write-beautiful-documentation-quickly-with-vitepress-10.png)We can then deploy this `dist` folder to whatever platform we want.
+![](img/build.png)
+
+We can then deploy this `dist` folder to whatever platform we want.
 
 If we want to test what our build looks like, we can run Vitepress’ serve function to create a local static web server.
 
-<section class="relative p-3 mb-8 overflow-hidden rounded-lg bg-accent" data-v-0be5e7a6=""><div class="absolute px-2 py-1 text-white transition duration-1000 transform -translate-x-1/2 -translate-y-1/2 rounded opacity-0 left-1/2 top-1/2 bg-primary" style="display:none;" data-v-0be5e7a6=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 130.2 130.2" fill="#ffffff" class="inline transition duration-300 icon-root" style="dislay:block;" data-v-2c7fa105="" data-v-0be5e7a6=""><path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M100.2 40.2L51.5 88.8 29.8 67.5" class="success-path" data-v-2c7fa105=""></path></svg> Copied </div><div class="flex justify-between pb-2 mb-3 border-b border-gray-500" data-v-0be5e7a6=""><h4 class="text-primary" data-v-0be5e7a6="">Serving our site locally</h4><div class="flex items-center text-xs text-gray-400" data-v-0be5e7a6=""> bash <button class="ml-4" data-v-0be5e7a6=""><svg height="20" viewBox="-21 -21 682.66669 682.66669" width="20" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="transition duration-300 fill-gray hover:fill-white icon-root" data-v-2c7fa105="" data-v-0be5e7a6=""><path d="M565 640H225c-41.36 0-75-33.64-75-75V225c0-41.36 33.64-75 75-75h340c41.36 0 75 33.64 75 75v340c0 41.36-33.64 75-75 75zM225 200c-13.785 0-25 11.215-25 25v340c0 13.785 11.215 25 25 25h340c13.785 0 25-11.215 25-25V225c0-13.785-11.215-25-25-25zM100 440H75c-13.785 0-25-11.215-25-25V75c0-13.785 11.215-25 25-25h340c13.785 0 25 11.215 25 25v23.75h50V75c0-41.36-33.64-75-75-75H75C33.64 0 0 33.64 0 75v340c0 41.36 33.64 75 75 75h25zm0 0" data-v-2c7fa105=""></path></svg></button></div></div><div data-v-0be5e7a6=""><precode language="" precodenum="18"></precode></div></section>
+```bash
+npm run docs:serve
+```
 
 ## Conclusion
 
