@@ -8,8 +8,6 @@ snippet: Vue Template Refs give our Javascript code a reference to easily access
 videoLink: https://www.youtube.com/watch?v=Z6iBAixVJ5Y
 ---
 
-# The Beginners Guide to Template Refs
-
 Vue Template Refs give our Javascript code a reference to easily access the template. For example, if we needed
 quick access to a component or HTML element, template refs is the perfect solution.
 
