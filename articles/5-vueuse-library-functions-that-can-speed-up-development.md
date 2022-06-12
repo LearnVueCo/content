@@ -142,7 +142,7 @@ Then, so we can really see what’s going on, let’s print out history inside o
 
 Okay – let’s run it. As we type, every character triggers a new entry in our history array, and if we click undo/redo, we’ll go to the corresponding entry.
 
-![](use-ref-history.gif)
+![]($BASE_URL/use-ref-history.gif)
 
 There are also different options that add even more functionality to this function. For example, we can track reactive objects deeply and limit the number of history entries like this.
 
@@ -223,13 +223,13 @@ Here’s a simple component with a popup window using `onClickOutside`.
 
 The result is like this, where we can open the popup with our button, and then close it by clicking outside the popup-content window.
 
-![](on-click-outside.gif)
+![]($BASE_URL/on-click-outside.gif)
 
 ## useVModel simplifies v-model binding
 
 A common use case for Vue developers is creating a custom v-model binding for a component. This means that our component accepts a value as a prop, and whenever that value is modified, our component will emit an update event to the parent.
 
-![](v-model.png)
+![]($BASE_URL/v-model.png)
 
 [For a full tutorial on building custom v-models, check out our complete guide on the topic.](https://learnvue.co/2021/01/everything-you-need-to-know-about-vue-v-model/)
 
@@ -295,7 +295,7 @@ Here’s a quick example of what that parent component might look like…
 
 The result looks something like this, where our value in our parent always stays up to date with the input in the child.
 
-![](use-vmodel.gif)
+![]($BASE_URL/use-vmodel.gif)
 
 ## useIntersectionObserver to track element visibility
 
@@ -397,7 +397,7 @@ We have a numerical source stored as a ref and an output that will be the one th
 
 For example, let’s say we want to build a counter that eases between two smooth integer values.
 
-![](use-transition.gif)We can do that in three steps:
+![]($BASE_URL/use-transition.gif)We can do that in three steps:
 
 - Creating our `count` ref and initializing it to zero
 - Creating our `output` ref with `useTransition` (setting our duration and transition type)

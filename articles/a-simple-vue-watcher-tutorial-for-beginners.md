@@ -64,7 +64,7 @@ export default {
 
 Whenever our title value changes, we can see the following printed out in the console.
 
-![](console-output.png)
+![]($BASE_URL/console-output.png)
 
 Simple right!
 
@@ -116,7 +116,7 @@ export default {
 
 So, right when our component is initialized, our watchEffect will run and log the starting value. Then, whenever the value of `userID` changes, our watchEffect will be triggered.
 
-![](composition-api-output.png)
+![]($BASE_URL/composition-api-output.png)
 
 Easy enough, right?
 

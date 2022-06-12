@@ -9,7 +9,7 @@ category: Top Tools
 
 **Nobody likes waiting** for things to load. Just look at Google’s 2017 data finding a correlation load times and bounce rates.
 
-![](google-bounce-rate.png)
+![]($BASE_URL/google-bounce-rate.png)
 
 One way to keep people from leaving your website is to add visual feedback so that they know things are just loading and not broken. It also attracts people’s attention so the wait time seems much shorter than it would with a static screen.
 
@@ -55,7 +55,7 @@ export default {
 
 And just like that, we should have our first spinner.
 
-![](vue-simple-spinner.gif)
+![]($BASE_URL/vue-simple-spinner.gif)
 
 ## 2\. Vue Radial Progress
 
@@ -105,7 +105,7 @@ export default {
 </script>
 ```
 
-![](vue-radial-progress.gif)
+![]($BASE_URL/vue-radial-progress.gif)
 
 ## 3\. Vue Loading Overlay
 
@@ -168,7 +168,7 @@ export default {
 </script>
 ```
 
-![](vue-loading-overlay.gif)
+![]($BASE_URL/vue-loading-overlay.gif)
 
 ## 4\. Vue Progress Path
 
@@ -217,7 +217,7 @@ Another amazing thing about this library is how easy it is to customize. Instead
 vue
 ```
 
-![](loading-progress.gif)
+![]($BASE_URL/loading-progress.gif)
 
 ## 5\. Vue Loading Button
 
@@ -248,7 +248,7 @@ export default {
 
 In short, all you have to do is set the loading value to true/false depending on the situation. You can also add custom styles to make it fit into your application.
 
-![](vue-loading-button.gif)
+![]($BASE_URL/vue-loading-button.gif)
 
 ## 6\. TB Skeleton
 
@@ -258,7 +258,7 @@ Skeleton loading is a great way to give the [illusion of speed](https://css-tric
 
 This screenshot from Linkedin shows a great example of skeleton loading.
 
-![](skeleton-loader.png)TBSkeleton is a great way to implement this feature in your Vue projects. However, it is pretty code intensive and will require you to plan your elements wisely.
+![]($BASE_URL/skeleton-loader.png)TBSkeleton is a great way to implement this feature in your Vue projects. However, it is pretty code intensive and will require you to plan your elements wisely.
 
 When creating a skeleton, you essentially have to create all of the outlines of your different elements in a unique skeleton element.
 

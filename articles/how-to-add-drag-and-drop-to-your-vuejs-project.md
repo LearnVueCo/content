@@ -17,7 +17,7 @@ Like all [UI elements](https://learnvue.co/2019/12/8-free-vue-icon-libraries-to-
 
 In this tutorial, we’ll be using the built-in HTML Drag and Drop API to set up a simple drag and drop system. Like this…
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Hopefully, by the end, you’ll have a better understanding of this API and how to add it into your projects. Let’s go!
 
@@ -59,7 +59,7 @@ We should know a few properties/methods of dataTransfer (if you want to know mor
 
 Again, here’s the example we’re going to make…
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 As you can see, there are two lists and we can smoothly drag and drop items between them.
 
@@ -142,7 +142,7 @@ In our template, here’s the outline of our components. This code will display 
 </template>
 ```
 
-![](list.png)
+![]($BASE_URL/list.png)
 
 It doesn’t really matter how you style your components.
 
@@ -218,7 +218,7 @@ Let’s start with adding events to our items. We will need to make our element 
 
 Since we added the `draggable` attribute, if you run your app, you should be able to drag your element around like this, but you won’t be able to drop it anywhere.
 
-![](drag.gif)
+![]($BASE_URL/drag.gif)
 
 **Let’s give it a drop zone to accept our new draggable elements.**
 
@@ -247,7 +247,7 @@ And that should be it!
 
 If we run our app now, we should see that everything works as expected. We can drag and drop elements between our two different lists.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 ## Conclusion
 

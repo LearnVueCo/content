@@ -35,7 +35,7 @@ First, we need to create our app. So let’s open up a terminal and say `npm ini
 
 Then, we can add our project name and since Vite is framework-agnostic, we have to select Vue as our template.
 
-![](vite-console.png)
+![]($BASE_URL/vite-console.png)
 
 Now, let’s run these commands to install all of our dependencies and start our project.
 
@@ -53,13 +53,13 @@ We’ll be setting up the rest of our app including multiple pages in a little b
 
 Inside our browser, let’s navigate to the [Firebase Console](https://console.firebase.google.com/u/0/) and give our project a name.
 
-![](firebase-name.png)
+![]($BASE_URL/firebase-name.png)
 
 On the next slide, it doesn’t really matter whether or not we choose to add Google Analytics. For this tutorial, it’s not necessary so I’m not going to.
 
 After the project is created, let’s create a Firebase web app by clicking this button.
 
-![](firebase-web-app.png)
+![]($BASE_URL/firebase-web-app.png)
 
 Once we give our project a name, we are given a block of code. The highlighted section will come in handy later, so try to keep this page open. But if you accidentally close it, you can always find your way back to it from your project settings.
 
@@ -76,7 +76,7 @@ Our Vue app will be pretty simple – only consisting of four pages:
 
 So let’s create these files inside of a folder called `src/views`. We’ll be filling each of these throughout the rest of this tutorial, but for our router to work, we need this to exist.
 
-![](vue-app-pages.png)
+![]($BASE_URL/vue-app-pages.png)
 
 We’re going to be using Vue Router to handle all of these routes. First, we have to install the Vue Router version compatible with Vue 3. In our terminal, let’s say…
 
@@ -170,7 +170,7 @@ Since our `App.vue` file contains our router view, this navigation section will 
 
 And this is the result. It’s not the prettiest, but it has all the functionality we need for this example. We can click around and access our different pages.
 
-![](navigation-ss.png)
+![]($BASE_URL/navigation-ss.png)
 
 One thing to note is that since we haven’t set up authentication, we can **access our feed page before we even log in!**
 
@@ -222,7 +222,7 @@ Firebase gives us [several different options for user authentication](https://fi
 
 So in our Firebase console, let’s navigate to the authentication tab and make sure that the email/password option is enabled.
 
-![](firebase-auth.png)
+![]($BASE_URL/firebase-auth.png)
 
 Okay – now we’re ready to create our first user.
 
@@ -295,7 +295,7 @@ If we type a valid **email address and a password at least 6 characters long**, 
 
 And if we go to our Firebase console, we should see our new account in our database!
 
-![](firebase-auth-console.png)
+![]($BASE_URL/firebase-auth-console.png)
 
 Exciting!!
 
@@ -462,7 +462,7 @@ For now, when our button is clicked, we just want to call our `signOut` method.
 
 As soon as we hit sign out, we are no longer logged in. This also means that our conditional rendered content in our navbar will all change to the logged-out state.
 
-![](logout.gif)
+![]($BASE_URL/logout.gif)
 
 ### Verifying Logged In Status
 
@@ -502,11 +502,11 @@ We also want to make sure to remove our `authListener` whenever our component is
 
 Alright – let’s see this in action. Let’s make sure that we’re logged out and try to access our feed page.
 
-![](demo-unauth.gif)
+![]($BASE_URL/demo-unauth.gif)
 
 Now, if we log in and go back to `/feed`, it will load properly because we actually have a logged in user object exists!
 
-![](demo-auth.gif)
+![]($BASE_URL/demo-auth.gif)
 
 Awesome. The fact that Firebase authentication comes with this** persistent user data built-in** makes it super easy for us to manage sessions.
 

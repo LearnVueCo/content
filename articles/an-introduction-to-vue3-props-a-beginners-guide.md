@@ -21,7 +21,7 @@ First, we have to understand what [props are.](https://vuejs.org/v2/guide/compon
 
 Since props allow us to share data between components, it lets us organize our Vue projects and components into more modular components.
 
-![](props-in-vue.png)
+![]($BASE_URL/props-in-vue.png)
 
 ## Let’s just jump into an example
 
@@ -59,7 +59,7 @@ The main motivation behind the change in the way we access Vue 3 props is to mak
 
 A big goal for the Vue Team when designing Vue 3 was to make it more scalable for large projects. Part of this was redesigning the Options API to the Composition API to allow for better code organization.
 
-![](../4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
+![]($BASE_URL/4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
 
 But by eliminating a majority of references to `this` and instead using explicit context and props variables, it would increase readability for large Vue projects.
 

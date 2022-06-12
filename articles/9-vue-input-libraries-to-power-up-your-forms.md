@@ -34,7 +34,7 @@ Luckily, Vue Select, a library by Jeff Sagal provides an intuitive way to add fe
 
 It’s easy to use and I’ve definitely used it across several projects.
 
-![](vue-select.gif)
+![]($BASE_URL/vue-select.gif)
 
 ## 2\. [Vue Input Tag](https://github.com/matiastucci/vue-input-tag)
 
@@ -42,7 +42,7 @@ It’s easy to use and I’ve definitely used it across several projects.
 
 The Vue Input Tag library is a great way to add a powerful feature to your forms.
 
-![](vue-input-form.png)
+![]($BASE_URL/vue-input-form.png)
 
 ## 3\. [Vue Dropdowns](https://github.com/mikerodham/vue-dropdowns)
 
@@ -50,7 +50,7 @@ Vue Dropdowns is another library that handles `<select>` elements. Not only does
 
 With a simple setup, it’s definitely a great way to make your forms look prettier with minimal effort.
 
-![](vue-dropdown.png)
+![]($BASE_URL/vue-dropdown.png)
 
 ## 4\. [Vue Color](https://github.com/xiaokaike/vue-color)
 
@@ -60,7 +60,7 @@ Vue Color is a simple way to add color selection into your forms. Implementing o
 
 It comes with several different styles, event hooks, and support for different color formats. I definitely recommend Vue Color for adding some next level customizability to your app.
 
-![](vue-color.png)
+![]($BASE_URL/vue-color.png)
 
 ## 5\. [VueJS DatePicker](https://github.com/charliekassel/vuejs-datepicker)
 
@@ -70,7 +70,7 @@ In my opinion, it’s very professional looking and is also extremely customizab
 
 But don’t take my word for it, check out this screenshot from the Vue DatePicker demo.
 
-![](vue-datepicker.gif)
+![]($BASE_URL/vue-datepicker.gif)
 
 ## 6\. [Vue Switches](https://github.com/drewjbartlett/vue-switches)
 
@@ -78,7 +78,7 @@ But don’t take my word for it, check out this screenshot from the Vue DatePick
 
 Vue Switches is an amazing library for creating beautiful switch inputs. With a variety of themes and the ability to customize colors and text, it’s a flexible solution for your forms.
 
-![](vue-switches.png)
+![]($BASE_URL/vue-switches.png)
 
 ## 7\. [Vue Dropzone](https://rowanwins.github.io/vue-dropzone/docs/dist/#/demo)
 
@@ -86,7 +86,7 @@ Vue Dropzone is a [drag and drop](https://learnvue.co/2020/01/how-to-add-drag-an
 
 Vue Dropzone provides dozens of [custom props](https://learnvue.co/2020/01/creating-your-first-vuejs-custom-directive/) and events that allow you to tweak its functionality to your specific projects. But regardless if you choose to modify it or not, it’s a **simple, yet powerful** tool to add to your forms.
 
-![](vue-dropzone.png)
+![]($BASE_URL/vue-dropzone.png)
 
 ## 8\. [Vue Circle Slider](https://github.com/devstark-com/vue-circle-slider)
 
@@ -96,7 +96,7 @@ I love this library because it’s so versatile. It supports touch controls, all
 
 Overall, this is a really cool option to consider to add some more style to your Vue applications.
 
-![](vue-circle-slider.gif)
+![]($BASE_URL/vue-circle-slider.gif)
 
 ## 9\. [Vue Phone Number](https://github.com/LouisMazel/vue-phone-number-input)
 
@@ -110,7 +110,7 @@ It’s also extremely flexible and you can customize several features, including
 - Theme and Colors
 - Phone Number Formatting
 
-![](vue-phone-number.gif)
+![]($BASE_URL/vue-phone-number.gif)
 
 ## Wrapping Up
 

@@ -96,7 +96,7 @@ One great thing about Vue.use is that it makes sure that your plugin is only ins
 
 Finally. We have our plugin installed. Now, if we run our project and check out the logs we should see some output in the console.
 
-![](console-output.png)
+![]($BASE_URL/console-output.png)
 
 ## Let’s Make It Actually Useful
 

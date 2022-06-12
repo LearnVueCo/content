@@ -13,13 +13,13 @@ category: Full Tutorials
 
 There are so many examples of sites that use tag inputs to help organize content, like WordPress or Medium, for example.
 
-![](medium-tag-input.png)
+![]($BASE_URL/medium-tag-input.png)
 
 By the end of this tutorial, we’ll have a working, [reusable](https://learnvue.co/2019/12/building-reusable-components-in-vuejs-tabs/) VueJS Tag Input component that you can extend depending on your project’s needs.
 
 Here’s a quick look at what we’ll be making…
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Okay! Code time!
 
@@ -92,7 +92,7 @@ Our snippet also includes the styling for the entire tag input. I want this arti
 
 If we display this component, we should see something like this…
 
-![](tags-ss.png)
+![]($BASE_URL/tags-ss.png)
 
 ## Handling functionality
 
@@ -130,7 +130,7 @@ Now, let’s implement the `addTag` method. Since we are using it as an event ha
 
 Okay. Let’s check out our component now. We should be able to type something in our input, and when we hit `comma` or `enter`, whatever we were typing becomes a new tag!
 
-![](new-tags.gif)
+![]($BASE_URL/new-tags.gif)
 
 ### Deleting tags from our list
 
@@ -160,7 +160,7 @@ While the system that we’ve already created works great, let’s make it more 
 
 This is something that a majority of tag inputs let you do – if your input is empty and you hit backspace, it’ll remove the last tag in your list. I think seeing an example makes more sense.
 
-![](backspace-delete.gif)
+![]($BASE_URL/backspace-delete.gif)
 
 To add this feature, we need to add another keydown listener that listens for the delete button. This event will then call a `removeLastTag` method.
 

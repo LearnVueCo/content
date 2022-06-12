@@ -88,7 +88,7 @@ To actually pass the value of our original change event, we need to send our cus
 
 Perfect! Now if we type in our custom input, our parent component will be properly logging all of our changes.
 
-![](vue-emit-console.png)
+![]($BASE_URL/vue-emit-console.png)
 
 Now, let’s move on to emitting events from our script section.
 

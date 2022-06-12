@@ -64,8 +64,8 @@ export default {
 
 Now, if we reload our browser, we’ll see that our browser is automatically focused and we can type without having to click it first.
 
-![](template-ref-autofocus.gif)
-_automatically focused!_
+${BASE*URL}/(template-ref-autofocus.gif)
+\_automatically focused!*
 
 Perfect.
 

@@ -18,14 +18,14 @@ They are highly effective for specific types of content such as user-generated c
 
 Here’s an example of what infinite scrolling is.
 
-![](https://addyosmani.com/assets/images/infinite-scroll.png)
-_Source: [Addy Osmani](https://addyosmani.com/blog/infinite-scroll-without-layout-shifts/)_
+${BASE*URL}/(https://addyosmani.com/assets/images/infinite-scroll.png)
+\_Source: [Addy Osmani](https://addyosmani.com/blog/infinite-scroll-without-layout-shifts/)*
 
 In this tutorial, we’ll be creating a Vue 3 Infinite Scrolling Component using the [Composition API](https://learnvue.co/2020/01/4-Vue-3-composition-api-tips-you-should-know/).
 
 Here’s a sneak peek of what we’ll be building by the end of it. As you can see, it scrolls indefinitely and the scrollbar on the right side of the screen reflects this.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Okay – let’s jump right in.
 
@@ -179,7 +179,7 @@ Finally, to display our data inside our template, we want to run a `v-for` loop 
 
 Our current page should render 10 posts and look like this.
 
-![](posts-loading.png)
+![]($BASE_URL/posts-loading.png)
 
 But if we scroll to the bottom, nothing happens. So let’s move on to the exciting part: infinite scrolling!
 
@@ -258,7 +258,7 @@ const handleScroll = (e) => {
 
 And that’s it! When we scroll down to the bottom of our current posts, new posts should automatically load in. Let’s take a look at what we have.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Perfect!
 

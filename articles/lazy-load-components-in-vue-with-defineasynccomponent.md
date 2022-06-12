@@ -16,7 +16,7 @@ This is a great way to** improve initial page loads** as our app will be loaded 
 
 In this tutorial, we’ll learn all about `defineAsyncComponent` and look at an example that defers the loading of a popup until it’s required by our app.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Okay – let’s get into it.
 
@@ -128,7 +128,7 @@ So here’s what our login component looks like, it just creates a popup by blac
 </style>
 ```
 
-![](popup.png)
+![]($BASE_URL/popup.png)
 
 Instead of importing it and including it in our components options like we usually would…
 
@@ -184,15 +184,15 @@ If we don’t use `defineAsyncComponent`, as soon as our page loads, we’ll see
 
 While in this example, it may not make the biggest performance issue, it still slows down the load a little bit and if we have dozens of components doing this, it can really add up.
 
-![](sync-perf.png)
+![]($BASE_URL/sync-perf.png)
 
 However, if we look at the same tab using `defineAsyncComponent`, we’ll notice that when our page loads, `LoginPopup.vue` is nowhere to be seen. This is because it hasn’t been loaded yet.
 
-![](async-perf-before-load.png)
+![]($BASE_URL/async-perf-before-load.png)
 
 But once we click our button and tell our app to show our popup, that’s when it’s loaded from the server and we can see it in the `Network` tab.
 
-![](async-perf-loaded.png)
+![]($BASE_URL/async-perf-loaded.png)
 
 **This helps us achieve the best performance.**
 
@@ -200,7 +200,7 @@ We only want to load the components needed on our page’s initial load. Compone
 
 ## How to use with an asynchronous setup function
 
-Regardless if we defer loading with `defineAsyncComponent`, **any component with an asynchronous setup function must be wrapped with a <Suspense>**.
+Regardless if we defer loading with `defineAsyncComponent`, any component with an asynchronous setup function must be wrapped with a `<Suspense>`.
 
 Let’s take a look at an example. This is from our[ Introduction to Suspense Components](https://learnvue.co/2020/01/an-introduction-to-vuejs-suspense-components/) – which is a great resource if you’re new to async setup functions.
 
@@ -277,7 +277,7 @@ A neat feature of Suspense is that we can display fallback content using slots a
 
 This is the result. A user will see “Loading…” and then after 3 seconds (the hard-coded value for our `setTimeout`), our component will render.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 **By default, all components we define using defineAsyncComponent are suspensible.**
 

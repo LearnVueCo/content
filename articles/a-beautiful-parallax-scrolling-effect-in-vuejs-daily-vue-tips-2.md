@@ -13,7 +13,7 @@ Recently, I was inspired by this Webflow example of parallax scrolling, and want
 
 This is what I came up with.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 By the end of this tutorial, you’ll know how to set up this parallax scrolling effect in Vue, and be well on your way to implementing this in your own projects with your own images.
 
@@ -159,7 +159,7 @@ The rest is pretty self-explanatory and were just the properties that I thought 
 
 Now at this point, this is what we should see.
 
-![](step-1.png)
+![]($BASE_URL/step-1.png)
 
 Our page looks put together, but if we scroll nothing happens and our Section #2 never becomes visible.
 
@@ -231,7 +231,7 @@ const handleScroll = (evt) => {
 
 And that’s it for our parallax effect, here’s what our app should look like as we scroll down.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 There’s so many different extensions you could add on this project – more sections, more layers, different effects. As long as you understand how to make your styles respond to the scroll position, the possibilities are endless.
 

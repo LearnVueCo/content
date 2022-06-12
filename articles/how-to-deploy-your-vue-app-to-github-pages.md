@@ -49,7 +49,7 @@ If we don’t have this configuration, our deployed site will not properly load 
 
 We want to route it to the URL path of our deployed Github Pages site, which we can find in our repository settings.
 
-![](pages-url.png)
+![]($BASE_URL/pages-url.png)
 
 We want to take the path found in that red box – anything after github.io – and use it in our `vue.config.js `like this.
 
@@ -77,13 +77,13 @@ This commits our changes to the master branch so that we can create a `dist` sub
 
 This step makes gh-pages a subtree of our master branch. The [prefix option](https://gist.github.com/SKempin/b7857a6ff6bddb05717cc17a44091202) specifies the folder that we want for our the subtree. If we take a look at our gh-pages branch, we will see that it is equivalent to being the root of the dist folder.
 
-![](subtree-commit.png)
+![]($BASE_URL/subtree-commit.png)
 
 ### Step 5. Done!
 
 In a few minutes, Github Pages should refresh with your newest repository changes, and you should be able to see your Vue project online. Exciting!
 
-![](deployed-site.png)
+![]($BASE_URL/deployed-site.png)
 
 ## Tip – Handling Vue Router with a Custom 404 Page
 

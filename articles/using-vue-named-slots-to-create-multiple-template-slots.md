@@ -106,7 +106,7 @@ So wherever we declare our component with Vue named slots, we can create three `
 
 If we save and take a look at this, you’ll see that there we still our fallback content
 
-![](unnamed-slots.png)
+![]($BASE_URL/unnamed-slots.png)
 
 And that’s because our templates are not currently targeting any of our actual defined slots!
 
@@ -126,7 +126,7 @@ To fix this, using the `v-slot` directive, we’ll pass in the name of each slot
 
 Now, we’ll actually see our content being injected into each of the slots.
 
-![](named-slots.png)
+![]($BASE_URL/named-slots.png)
 
 And honestly that’s it! I know, it’s really that easy to use named slots in your code.
 
@@ -164,11 +164,11 @@ In this example, it’s much easier to see why we would need multiple slots. Sin
 
 Here’s an example of what our final components might look like in the browser.
 
-![](example.png)
+![]($BASE_URL/example.png)
 
 If we check our DOM, we can see that template using v-slot is properly inserting content in the right places.
 
-![](example-dom.png)
+![]($BASE_URL/example-dom.png)
 
 All of this means that if we want to use slots in this component, we’re going to need more than one.
 

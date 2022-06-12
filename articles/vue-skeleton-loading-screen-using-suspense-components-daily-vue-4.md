@@ -13,7 +13,7 @@ category: Full Tutorials
 
 For example, sites like Facebook and Linkedin use skeleton loading screens on their content.
 
-![](facebook-example.png)
+![]($BASE_URL/facebook-example.png)
 
 In Vue3, the [introduction of suspense components](https://learnvue.co/2020/01/an-introduction-to-vuejs-suspense-components/) has made it really easy to add skeleton loaders.
 
@@ -21,7 +21,7 @@ For this example, I’ve recreated the [Medium author section](https://medium.co
 
 Here’s a quick screenshot of what we’ll be building!
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 Excited? Me too – let’s jump right in.
 
@@ -152,7 +152,7 @@ Finally, let’s style it to make it look nice. These are the styles that I used
 
 Now, our ProfileCard component should look like this.
 
-![](step-1.png)
+![]($BASE_URL/step-1.png)
 
 ## Using Suspense Components to Render Fallback Content
 
@@ -173,7 +173,7 @@ Inside some other component, we can use this code to build our suspense componen
 
 Now, if we run our app, we’ll see that it says `Loading…` for a few seconds until our ProfileCard component resolves.
 
-![](suspense-example.gif)
+![]($BASE_URL/suspense-example.gif)
 
 But this isn’t a skeleton loading screen! So let’s build that right now.
 
@@ -259,7 +259,7 @@ To add this skeleton component into our project, we can replace our suspense fal
 
 Looking back at our app, we’ll see that now, it’s the type of look that we’re aiming for. It shows a rough outline of our content until our page loads!
 
-![](skeleton-example.gif)
+![]($BASE_URL/skeleton-example.gif)
 
 ## Extra Features We Can Add
 
@@ -304,7 +304,7 @@ Next, inside each of our elements, we want to replace our background-color prope
 
 The final result is a very subtle touch, but it’s the little things like this that can really make your Vue app stand out.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 ## And there we go!
 

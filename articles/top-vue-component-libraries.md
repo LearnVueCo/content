@@ -26,7 +26,7 @@ Let’s go!
 
 [Vuetify](https://vuetifyjs.com/en/) is a Vue UI Library with handcrafted Material components. Specifically developed according to Material Design specifications, each component is built with a mobile first approach to be both responsive and extremely modular.
 
-![](vuetify.png)
+![]($BASE_URL/vuetify.png)
 
 Adding Vuetify to your project with the vue-cli is as easy as running` vue add vuetify`.
 
@@ -56,13 +56,13 @@ Perhaps most well known is the fact that Bootstrap (and therefore BootstrapVue) 
 
 Here’s a table summarizing the different screen sizes you can target and what your code might look like.
 
-![](bootstrap-vue-responsive.png)
+![]($BASE_URL/bootstrap-vue-responsive.png)
 
 It comes with 85+ components, 45+ plugins, directives, and 1200+ icons.
 
 The 1200+ icons are insanely useful when building applications. With icons for accessibility, social media, and guiding the user, BootstrapVue has thousands of built-in ways to improve the user experience of your app.
 
-![](bootstrap-vue-icons.png)
+![]($BASE_URL/bootstrap-vue-icons.png)
 
 ### Vue Material (9.3K ⭐️)
 
@@ -80,13 +80,13 @@ One reason I like Vue Material is that there are so many beautiful themes out th
 
 [Here’s one from CreativeTim](https://www.creative-tim.com/product/vue-material-kit-pro?ref=learnvue.co).
 
-![](vue-material.png)
+![]($BASE_URL/vue-material.png)
 
 ### Quasar (18.4K ⭐️)
 
 [Quasar](https://quasar.dev/) is an open source Vue.js based framework that allows developers to built responsive apps for almost every platform. Quasar has the built-in ability to switch between build modes.
 
-![](quasar.png)
+![]($BASE_URL/quasar.png)
 
 This means that you can make SPAs, PWAs, and SSR apps, but even **mobile apps, desktop apps, and browser extensions**!
 
@@ -109,7 +109,7 @@ I highly recommend checking Quasar out if you’re looking for a powerful framew
 
 For example, styling different buttons is as simple as this.
 
-![](buefy.png)
+![]($BASE_URL/buefy.png)
 
 Buefy brings the simplicity of Bulma into Vue by providing developers with dozens of built in components such as buttons, dropdowns, pagination, and more.
 
@@ -138,7 +138,7 @@ But my favorite feature is how easy it is to add your own theme/color scheme to 
 
 Of course, you could always customize the colors by overriding the default CSS properties. But, Element provides a Chrome Extension that lets you customize your theme and preview it in real time.
 
-![](element.png)
+![]($BASE_URL/element.png)
 
 It can really save hours of changing CSS files, seeing if it looks any good, and then continuously changing colors until you find the ones you like.
 
@@ -152,7 +152,7 @@ For a table component, it has so many amazing built-in features that you don’t
 
 Plus, look how amazing it looks!
 
-![](vue-table-components.png)
+![]($BASE_URL/vue-table-components.png)
 
 ### vue-dataset
 
@@ -164,7 +164,7 @@ You can build your table with any sort of DOM element, not just `&lt;table&gt;` 
 
 Here’s an example of using cards to display a dataset.
 
-![](vue-dataset.png)
+![]($BASE_URL/vue-dataset.png)
 
 ## Vue Notification Components
 
@@ -204,7 +204,7 @@ You can add it to your project today just by running `npm install vue-simple-spi
 
 Here’s an example of what your spinner could look like.
 
-![](simple-spinner.gif)
+![]($BASE_URL/simple-spinner.gif)
 
 ### vue-progress-path
 
@@ -214,7 +214,7 @@ Its coolest feature is that you can pass it your own .svg file and it will creat
 
 Just take a look at some of the possibilities!
 
-![](progress-path.gif)
+![]($BASE_URL/progress-path.gif)
 
 ### Vue-splash
 
@@ -239,7 +239,7 @@ Here’s an example of what the code for your splash screen might look like.
 
 And here’s the resulting splash screen!
 
-![](splash.png)
+![]($BASE_URL/splash.png)
 
 Easy to use and incredibly effective.
 
@@ -259,7 +259,7 @@ There are different options for different styles and types of modals including:
 
 I love the fact that it comes with built in slots for buttons and components for tabs. It streamlines development while allowing for some next level customization.
 
-![](modal-vue.gif)
+![]($BASE_URL/modal-vue.gif)
 
 ### Vue-tinybox
 
@@ -269,7 +269,7 @@ While it’s not as customizable as some other options out there, the fact that 
 
 Plus it looks good! Just check out this demo.
 
-![](tinybox.gif)
+![]($BASE_URL/tinybox.gif)
 
 ## Vue Icon Libraries
 
@@ -279,7 +279,7 @@ Plus it looks good! Just check out this demo.
 
 You can even pass all of the Font Awesome options in as component attributes so making your icon pulse, spin, or scale so it’s easy to customize or even animate your icons.
 
-![](vue-awesome.png)
+![]($BASE_URL/vue-awesome.png)
 
 ### Vue Unicons
 
@@ -287,7 +287,7 @@ In my opinion, [Vue Unicons](https://github.com/antonreshetov/vue-unicons) is on
 
 Each Vue Unicon component acts similarly to an svg taking in attributes like name, size, color, and style.
 
-![](unicons.png)
+![]($BASE_URL/unicons.png)
 
 ### Vue Material Design
 
@@ -297,7 +297,7 @@ Not only is there great documentation for this library, but it’s so quick to g
 
 Also since Vue Material Design uses SVGs, all you have to do is change some props around to customize an icon’s style.
 
-![](vue-md.png)
+![]($BASE_URL/vue-md.png)
 
 ## Vue Chart Libraries
 
@@ -311,7 +311,7 @@ Just by passing in your data either via props, local data, or an API, you can cr
 
 One cool feature is that by using the reactiveProp or reactiveData mixins, you can create reactive charts that update to your data in real-time.
 
-![](vue-chartjs.png)
+![]($BASE_URL/vue-chartjs.png)
 
 ### Vue3-chart-v2
 
@@ -321,7 +321,7 @@ Using a custom renderChart method, you can easily create your own component usin
 
 Here’s an example of a doughnut graph made with vue3-chart-v2.
 
-![](chart-v2.png)
+![]($BASE_URL/chart-v2.png)
 
 ## Alright – that’s all!
 

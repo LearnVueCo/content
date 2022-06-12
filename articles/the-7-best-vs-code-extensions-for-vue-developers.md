@@ -18,7 +18,7 @@ Ready? Let’s jump right in.
 
 ## [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
-![](vetur.png)
+![]($BASE_URL/vetur.png)
 
 **If you download one VS Code extension from this list, it has to be Vetur.**
 
@@ -52,7 +52,7 @@ It’s really great for writing things like quick SFCs, Vue directives, and acce
 
 ## [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks)
 
-![](bookmarks.png)
+![]($BASE_URL/bookmarks.png)
 
 Many VSCode Extensions for Vue Developers don’t really show their full potential until you get into large projects.
 
@@ -62,7 +62,7 @@ Gone are the days of meticulously scrolling up and down your file to find where 
 
 ## [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
 
-![](brackets.png)
+![]($BASE_URL/brackets.png)
 
 Bracket Pair Colorizer does exactly what it says – it takes matching brackets and gives them unique matching colors.
 
@@ -74,7 +74,7 @@ It’s definitely worth checking out.
 
 ## [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
 
-![](rename-tag.gif)
+![]($BASE_URL/rename-tag.gif)
 
 Auto Rename Tag is a useful VSCode extension that will help prevent errors in your template code.
 

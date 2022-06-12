@@ -13,11 +13,11 @@ In this article, we’re going to be taking a look at how to Vue 3 Desktop Proje
 
 To do this, we’re going to be using [Electron](https://www.electronjs.org/) – one of the most popular frameworks for building cross-platform desktop apps with Javascript. So many popular apps are using Electron like VSCode, Slack, Twitch, and a ton more.
 
-![](electron.png)
+![]($BASE_URL/electron.png)
 
 Let’s first take a quick look at what we’re going to be doing in this tutorial..
 
-![](result.png)
+![]($BASE_URL/result.png)
 
 So this is just the Vite starter template BUT it’s in its own dedicated app – not in our browser. That’s a super cool step and a necessary one to build your own desktop apps.
 
@@ -41,7 +41,7 @@ In our terminal, we can just run a plain old `npm run dev`. get our local host u
 
 Here’s the Vite starter template!
 
-![](vite-starter.png)
+![]($BASE_URL/vite-starter.png)
 
 Perfect – now it’s time to add Electron to this setup.
 
@@ -57,7 +57,7 @@ npm install --save-dev electron
 
 Next, let’s take a quick look at the Electron guide again.
 
-![](electron-guide.png)
+![]($BASE_URL/electron-guide.png)
 
 It says that a simple Electron setup needs a four main files:
 
@@ -78,7 +78,7 @@ We want to make sure that when our project is built, that all of its references 
 
 Building our Vite project creates a dist folder with the following structure.
 
-![](vite-output.png)
+![]($BASE_URL/vite-output.png)
 
 But since our Electron code is in our root directory, we want to set the base for our entire project to be this dist folder. We can do this by using the `path` library and setting the `base` property in our `vite.config.js` file.
 
@@ -193,7 +193,7 @@ And that’s all of the code to build our basic Electron app.
 
 All we have to do now is go to our terminal and say `npm run electron:start` and…
 
-![](result.png)
+![]($BASE_URL/result.png)
 
 We have our desktop app! Amazing 🙂
 

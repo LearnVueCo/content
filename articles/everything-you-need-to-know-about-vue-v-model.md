@@ -50,7 +50,7 @@ Let’s look at a simple example that uses a v-model on a text input.
 
 When we type around in our text input, we’ll see that our data property is changing.
 
-![](simple.gif)
+![]($BASE_URL/simple.gif)
 
 Perfect.
 
@@ -139,8 +139,8 @@ Note: when we use a custom model name, the name of the emitted method will be `u
 
 Here’s a handy graphic from the Vue docs to summarize it.
 
-![](https://v3.vuejs.org.ua/images/v-bind-instead-of-sync.png)
-_[Source](https://vuejs.org/)_
+${BASE*URL}/(https://v3.vuejs.org.ua/images/v-bind-instead-of-sync.png)
+*[Source](https://vuejs.org/)\_
 
 ### Using v-model from our custom component
 
@@ -179,7 +179,7 @@ Next, let’s create our template to set the value as your `modelValue` prop and
 
 Now, if we go back and look at our code, we can see it in action.
 
-![](custom-component.gif)
+![]($BASE_URL/custom-component.gif)
 
 ## Tips for using v-model
 
@@ -262,7 +262,7 @@ export default {
 
 If we go look at our project, we can see both v-model’s working independently.
 
-![](multiple-v-model.gif)
+![]($BASE_URL/multiple-v-model.gif)
 
 ### Custom modifiers for our v-model
 
@@ -321,7 +321,7 @@ export default {
 
 Awesome. Let’s look at our application now.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 Whenever our input changes and we have a space, it will be removed in the parent value!
 

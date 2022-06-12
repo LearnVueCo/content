@@ -94,7 +94,7 @@ Without changing the default fallback content, we can easily implement this comp
 
 And if we look in our browser, our app will be showing the title.
 
-![](ex-1.png)
+![]($BASE_URL/ex-1.png)
 
 While we could easily change the content of our slot by adding a template expression into our slot, what happens if we want to render the `info.description` from our child component.
 
@@ -165,7 +165,7 @@ Now, all of our slot props, which for our example, is only info will be availabl
 
 Our final product will then look like this.
 
-![](result.png)
+![]($BASE_URL/result.png)
 
 Awesome!
 

@@ -21,7 +21,7 @@ In this quick tutorial, we’ll see how we can use Vitepress to rapidly create d
 
 Here’s what we’ll have at the end of our app.
 
-![](demo.png)
+![]($BASE_URL/demo.png)
 
 Excited?
 
@@ -80,7 +80,7 @@ echo '# Hello World' > docs/index.md
 
 We’ve created our site! If we navigate over to `http://localhost:3000`, we’ll see our markdown file being rendered in a webpage!
 
-![](our-first-page.png)
+![]($BASE_URL/our-first-page.png)
 
 Exciting! Let’s start customizing our site and using more Vitepress features.
 
@@ -92,7 +92,7 @@ Adding multiple pages to your Vitepress site is as easy as creating more markdow
 
 Let’s create a few pages and subdirectories in our project – our `docs/ `directory should now look like this.
 
-![](navigation.png)
+![]($BASE_URL/navigation.png)
 
 When Vitepress creates our SPA navigation, it uses the path of each markdown file to create a route. Additionally, files named `index.md` in any folder can also just be referenced by `/`.
 
@@ -120,7 +120,7 @@ In our markdown files, we have three ways of linking to routes. We can either us
 [docs/contact.html](/contact.html)
 ```
 
-![](routing.gif)
+![]($BASE_URL/routing.gif)
 
 ### Adding a Navbar and Sidebar to our Site
 
@@ -170,7 +170,7 @@ module.exports = {
 
 Going back to our browser, we can now see that Vitepress generates a pretty nice looking navbar and sidebar just from the few lines of configuration.
 
-![](sidebar-and-nav-bar.png)
+![]($BASE_URL/sidebar-and-nav-bar.png)
 
 One cool thing that we can do with Vitepress sidebars is to change the sidebar depending on what page we’re on.
 
@@ -211,10 +211,10 @@ I’ll only be covering some of my most frequently used ones here. [Click here f
 
 When writing good documentation, code examples are vital. Vitepress provides a way to quickly add code blocks and also specify what programming language it’s using.
 
-![](js.png)
-_docs/index.md_
+${BASE*URL}/(js.png)
+\_docs/index.md*
 
-![](code-blocks.png)
+![]($BASE_URL/code-blocks.png)
 
 ### Table of Contents
 
@@ -224,7 +224,7 @@ Adding a table of contents can be another great way to give your Vue static site
 [[toc]]
 ```
 
-![](toc.png)
+![]($BASE_URL/toc.png)
 
 ### Github Style Tables
 
@@ -237,7 +237,7 @@ Tables in Vitepress can take a little getting used to, but the simplicity and th
 | zebra striped |   rows   |        easy |
 ```
 
-![](table.png)
+![]($BASE_URL/table.png)
 
 ## Markdown Frontmatter Configuration
 
@@ -257,7 +257,7 @@ title: Contact
 
 Navigating to our `https://localhost:3000/contact` – we can see that it works.
 
-![](custom-frontmatter.png)
+![]($BASE_URL/custom-frontmatter.png)
 
 There are a lot of different things we can configure here. [Check out the documentation for all of the Frontmatter options. ](https://vitepress.vuejs.org/guide/frontmatter.html)
 
@@ -273,7 +273,7 @@ npm run dev:build
 
 The build output will by default go to `/docs/.vuepress/dist`. The dist folder for our example looks like this.
 
-![](build.png)
+![]($BASE_URL/build.png)
 
 We can then deploy this `dist` folder to whatever platform we want.
 

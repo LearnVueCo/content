@@ -153,8 +153,7 @@ If we were to just use props, we would need to continuously pass this prop throu
 
 This introduces **many places **for error and places that would need refactoring if something were to change in our codebase.
 
-![](https://miro.medium.com/max/1270/0*b58JvbNhE1tKv7Tb)
-_[Source](https://medium.com/front-end-weekly/props-drilling-in-react-js-723be80a08e5)_
+${BASE*URL}/(https://miro.medium.com/max/1270/0*b58JvbNhE1tKv7Tb) \*[Source](https://medium.com/front-end-weekly/props-drilling-in-react-js-723be80a08e5)\_
 
 Provide/inject fixes this by only requiring the component with the original value and the component that needs that value to have code. This allows for much easier **maintenance** of our codebases.
 

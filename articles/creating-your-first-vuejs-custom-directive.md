@@ -28,7 +28,7 @@ It’s custom directive time!
 
 Essentially, custom directives are a way to make your project fit your needs. If you use Vue plugins, you’ll notice that they use custom directives pretty frequently.
 
-![](v-lazy.png)
+![]($BASE_URL/v-lazy.png)
 
 For example, in the [v-lazy plugin](https://github.com/hilongjw/vue-lazyload), they use the directive v-lazy to add custom functionality that makes image loading more effective. Using a directive is the best case here because we want to directly edit the DOM.
 
@@ -134,7 +134,7 @@ app.directive("font-size", (el, binding) => {
 
 No matter which method you used, the result should look something like this.
 
-![](custom-directive.png)
+![]($BASE_URL/custom-directive.png)
 
 We have our first custom directive working! Now, let’s make this a little more advanced.
 
@@ -197,7 +197,7 @@ And then in our template.
 <p v-font-size:large>Large</p>
 ```
 
-![](directives.png)### Using modifiers
+![]($BASE_URL/directives.png)### Using modifiers
 
 Modifiers are similar to arguments in that they’re not geared for reactivity. But when used in combination with arguments, you can create an extremely customized system.
 
@@ -235,7 +235,7 @@ And then we can use them in our template
 
 The output should all three should look something like this.
 
-![](modifiers.png)
+![]($BASE_URL/modifiers.png)
 
 ## Conclusion
 

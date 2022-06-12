@@ -66,7 +66,7 @@ Now that we’ve defined our computed property, it becomes super easy to render 
 
 That’s it. Now, on our webpage, we should render `DLROWOLLEH` in a much cleaner and readable way.
 
-![](reverse-text.png)
+![]($BASE_URL/reverse-text.png)
 
 Using computed properties always makes your project more scalable. If we want to change the way the value is computed, we would only have to change **one computed property** instead of potentially hundreds of expression templates.
 

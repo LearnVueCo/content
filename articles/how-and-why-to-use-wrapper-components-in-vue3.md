@@ -98,7 +98,7 @@ Great. Our wrapper component is set up! Now, here’s an example of how we could
 
 If you really want to go into more depth with how v-model, $attrs, and v-bind work in Vue3, here is a[ great slide deck by Chris Fritz](https://github.com/chrisvfritz/vue-3-trends/blob/master/slides-2019-03-vueconfus.pdf)
 
-![](vue-3-trends.png)
+![]($BASE_URL/vue-3-trends.png)
 
 ## What else is possible?
 

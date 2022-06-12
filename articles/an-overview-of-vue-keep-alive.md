@@ -113,7 +113,7 @@ Keeping it short, this component has two buttons that switch what the dynamic co
 
 Now, if you run your App you should see something like this.
 
-![](tabs-ss.png)
+![]($BASE_URL/tabs-ss.png)
 
 Simple, I know, but it gets the point across.
 
@@ -121,11 +121,11 @@ When switching between components, you should notice a few things:
 
 - Everytime you switch tabs, the message from mounted() is printed in the console
 
-![](tabs-console.png)
+![]($BASE_URL/tabs-console.png)
 
 - If you fill out the input in Contact and then switch tabs, your input will not be there when you return.
 
-![](keep-alive-input.gif)
+![]($BASE_URL/keep-alive-input.gif)
 
 oth of these are because without keep-alive, Vue creates new instances of components so all of the lifecycle hooks re-run and any input you’ve made is lost.
 
@@ -145,11 +145,11 @@ Now, compared to before, your tab system should have the following functionality
 
 - The message from `mounted()` should be printed once and only once by each component
 
-![](keep-alive-console.png)
+![]($BASE_URL/keep-alive-console.png)
 
 - If you fill out the input on the Contact tab, it should still be there if you switch tabs and come back
 
-![](keep-alive-persistent-input.gif)
+![]($BASE_URL/keep-alive-persistent-input.gif)
 
 While this is a simple use case for using keep-alive components, it’s a good example of _why_ you might want to use them.
 

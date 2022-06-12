@@ -16,7 +16,7 @@ In this tutorial, we’ll take a look at the basics of using Vue Router transiti
 
 Here’s one of the four page transitions that we’ll be creating.
 
-![](example.gif)
+![](${BASE_URL}/example.gif)
 
 Alright – enough talk. Let’s jump right in.
 
@@ -149,7 +149,7 @@ We don’t even have to set opacity to 1 because the fade-enter-from and fade-le
 
 With some dummy components, here’s what our transition looks like.
 
-![](fade.gif)
+![]($BASE_URL/fade.gif)
 
 ## Slide Vue Router Transitions
 
@@ -207,7 +207,7 @@ Finally, our transition style will animate the absolute position of our componen
 
 Here’s our final result.
 
-![](slide.gif)
+![]($BASE_URL/slide.gif)
 
 ## Scale Vue Router Transitions
 
@@ -242,7 +242,7 @@ One thing I noticed makes this transition look a little bit cleaner is to give y
 
 And here’s the finished scale transition.
 
-![](scale.gif)
+![]($BASE_URL/scale.gif)
 
 ## Combining Vue Router Transitions
 
@@ -289,7 +289,7 @@ For example, let’s combine the slide in and scale out into one transition.
 
 Here’s our finished product!
 
-![](combined.gif)
+![]($BASE_URL/combined.gif)
 
 I think it looks pretty good!
 

@@ -15,15 +15,15 @@ By the end of this guide, you’ll understand the Vue `<transition>` element, cr
 
 First, we’ll take a look at Vue Transition to handle conditionally rendered content.
 
-![](vue-transition-demo.gif)
+![]($BASE_URL/vue-transition-demo.gif)
 
 Then, we’ll create our own CSS animation styles.
 
-![](vue-animation-demo.gif)
+![]($BASE_URL/vue-animation-demo.gif)
 
 Finally, we’ll see how to use a third party CSS library with Vue animations.
 
-![](vue-animation-demo-2.gif)
+![]($BASE_URL/vue-animation-demo-2.gif)
 
 Okay! Let’s jump right in.
 
@@ -125,7 +125,7 @@ Now what does this code do? It’s actually pretty intuitive because it joins th
 
 These styles say that when the transition is active, add a transition to the opacity attribute so it smoothly moves.
 
-![](vue-transition-demo.gif)
+![]($BASE_URL/vue-transition-demo.gif)
 
 Nice!
 
@@ -333,7 +333,7 @@ A cool trick is to make the leave animation use the same as the enter animation,
 
 Now, when we view our component and toggle our component, we should see something like this.
 
-![](vue-animation-demo.gif)
+![]($BASE_URL/vue-animation-demo.gif)
 
 There you have it! You’re using VueJS animations!
 
@@ -369,7 +369,7 @@ Now, in our `<transition>` element, we can use the attributes `enter-active-clas
 
 Super straightforward. Here’s our result.
 
-![](vue-animation-demo-2.gif)
+![]($BASE_URL/vue-animation-demo-2.gif)
 
 ## There you have it!
 

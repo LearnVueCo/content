@@ -17,7 +17,7 @@ By the end of this article, you should know more about the Composition API and h
 
 The main benefit of the Composition API is the efficiently organizing and reusing code. In the Options API, code for a single feature could be separated across different component options. Now, it’s all in one place.
 
-![](composition-api.png)
+![]($BASE_URL/composition-api.png)
 
 One of the suggested design patterns is to write your code in **separate** functions, return the properties you want exposed, and then include them in your setup method.
 

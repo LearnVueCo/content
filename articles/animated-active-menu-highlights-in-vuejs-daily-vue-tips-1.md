@@ -16,7 +16,7 @@ I ended up building some neat active menu highlight logic using the Composition 
 
 I thought I’d share my solution – here’s what I ended up building.
 
-![](active-menu.gif)
+![]($BASE_URL/active-menu.gif)
 
 Okay – let’s start coding it.
 
@@ -128,7 +128,7 @@ Back in our template, we want to add two things.
 
 Now, at this point, let’s check out what we have.
 
-![](menu.gif)
+![]($BASE_URL/menu.gif)
 
 Much better, now let’s actually make our active menu highlighter.
 
@@ -163,7 +163,7 @@ This will actually handle the [smooth slide animation](https://learnvue.co/2020/
 
 This is what it should look like.
 
-![](still.png)
+![]($BASE_URL/still.png)
 
 ## Animating our active menu highlight
 
@@ -181,7 +181,7 @@ const changeSelected = (i) => {
 
 Thanks to the transition we gave our highlight, the element will smoothly move between the old and new top positions.
 
-![](active-menu.gif)
+![]($BASE_URL/active-menu.gif)
 
 ## All done!
 

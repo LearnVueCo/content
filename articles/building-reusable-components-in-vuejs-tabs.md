@@ -15,7 +15,7 @@ In this tutorial, we’ll be making a custom tab component that allows any sort 
 
 This is what we’re going to be making!
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 Hopefully, this tutorial gives you some insight into designing reusable components. Plus, you’ll get some useful Vue code too!
 
@@ -205,7 +205,7 @@ We now have all our components linked up! Let’s try it out. If you missed it e
 
 If you included the same content as me, you should see something like this.
 
-![](basic.png)
+![]($BASE_URL/basic.png)
 
 I know. It’s pretty basic right now and there’s no tab stuff at all, but don’t worry, we’re about to add all the functionality.
 
@@ -245,7 +245,7 @@ We just have to change the header code to call our new method whenever one of th
 
 Now, we should have a working tab system in which the content reacts to our clicks.
 
-![](working-tabs.gif)
+![]($BASE_URL/working-tabs.gif)
 
 There! we have a working tab system!
 
@@ -276,7 +276,7 @@ All in all, after spending a little bit of time to make it all pretty. This is w
 
 If you want yours to look like this, just copy the [code from Github.](https://github.com/matthewmaribojoc/learn-vue-tab)
 
-![](styled-tabs.gif)
+![]($BASE_URL/styled-tabs.gif)
 
 As you can see, it’s starting to look pretty legit. Now let’s add some more component props to make it super easy to use.
 
@@ -355,7 +355,7 @@ Finally, we have to update `Demo.vue` to pass in a mode attribute to our compone
 
 Now, this is what our website looks like…
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 This is only the tip of the iceberg when it comes to adding custom props. It really depends on how you want to extend this tab system into your Vue project. Definitely just play around with it and see what’s possible!
 

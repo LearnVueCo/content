@@ -19,7 +19,7 @@ By the end of this tutorial, you’ll have created a Vue 3 project, built two co
 
 Here’s what we’re going to be making.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 [Here’s a link to the finished codebase (including all of the CSS styles).](https://github.com/matthewmaribojoc/learnvue-vue3-tutorial)
 
@@ -46,7 +46,7 @@ Next, to create our project, we want to run `vue create <PROJECT-NAME>`
 
 If we successfully updated our CLI, we should have an option to choose Vue 3.
 
-![](vue-cli-presets.png)
+![]($BASE_URL/vue-cli-presets.png)
 
 Once we choose the Vue 3 option, our app should build. When it’s done, we just have to go inside our project and then run our Vue app! The commands for that are:
 
@@ -57,7 +57,7 @@ npm run serve
 
 Now, if we navigate to our `http://localhost:8080/` in our browser, we should see our app!
 
-![](vue-cli-demo.png)
+![]($BASE_URL/vue-cli-demo.png)
 
 Perfect!
 
@@ -105,7 +105,7 @@ npm run dev
 
 Now, if we navigate to `http://localhost:3000` – we should see this following app.
 
-![](vue-3-vite.png)
+![]($BASE_URL/vue-3-vite.png)
 
 ## Some Vue Vite features you should know
 
@@ -138,7 +138,7 @@ The biggest change in Vue 3 is the introduction of the Composition API. In this 
 
 This allows us to create [more modular, readable, and scalable code](https://learnvue.co/2020/01/12-vuejs-best-practices-for-pro-developers/) because the code for a single feature can all be written in one area of our code.
 
-![](../4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
+![]($BASE_URL/../4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
 
 If we open up the `src/components/HelloWorld.vue` file, we can see code that looks identical to the code we wrote in Vue2 – this is called the Options API.
 
@@ -217,7 +217,7 @@ Then, if we go back to our app, you’ll see that we have reactive data using th
 
 For simplicity, I’m not including all the styles in this article, but if you want to see the styles I used, you can check out the [tutorial Github repository](https://github.com/matthewmaribojoc/learnvue-vue3-tutorial).
 
-![](reactive-data.gif)
+![]($BASE_URL/reactive-data.gif)
 
 Great!
 
@@ -264,7 +264,7 @@ Then, just like in the Options API, we can add a button to our template to call 
 
 Now, when we check out our application with our new clear input code, it should look a little like this.
 
-![](reset.gif)
+![]($BASE_URL/reset.gif)
 
 ## Adding a Second Component to our Vue 3 Project
 
@@ -408,13 +408,13 @@ That’s it.
 
 Okay. Let’s finally see what we got working now.
 
-![](demo.gif)
+![]($BASE_URL/demo.gif)
 
 ### Lifecycle Hooks in Your Vue 3 Project
 
 One another thing you should know before getting started in Vue 3 is how to use [Vue lifecycle hooks](https://learnvue.co/2020/03/how-to-use-lifecycle-hooks-in-vue3/).
 
-![](../how-to-use-lifecycle-hooks-in-vue3/img/vue-lifecycle.png)
+![]($BASE_URL/../how-to-use-lifecycle-hooks-in-vue3/img/vue-lifecycle.png)
 
 Like other parts of the Composition API, we have to import the lifecycle hooks we want to use and declare them in the setup method.
 

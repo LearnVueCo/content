@@ -57,7 +57,7 @@ const inputMsg = ref('')
 
 For our example, it will look something like this.
 
-![](https://i9.ytimg.com/vi_webp/snCLQmINqCU/mqdefault.webp?v=620a80d2&sqp=CNCElJUG&rs=AOn4CLD1fVUyAC9YS8tyUk5ZinruN3EwRA)
+![]($BASE_URL/https://i9.ytimg.com/vi_webp/snCLQmINqCU/mqdefault.webp?v=620a80d2&sqp=CNCElJUG&rs=AOn4CLD1fVUyAC9YS8tyUk5ZinruN3EwRA)
 
 Alright - now that we have our component setup, we're ready to go ahead and start testing.
 

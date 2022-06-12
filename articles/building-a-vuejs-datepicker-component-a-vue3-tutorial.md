@@ -14,7 +14,7 @@ In this tutorial, we’ll be building a basic DatePicker component that you can 
 
 Here’s a quick look at what we’ll be making.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 Alright, enough introduction – let’s jump straight into building it.
 
@@ -101,7 +101,7 @@ Then, inside our template we can use [v-for loops](https://learnvue.co/2020/02/6
 
 Our app should look like this right now.
 
-![](step-1.png)
+![]($BASE_URL/step-1.png)
 
 Let’s make this a little prettier and add the following CSS styles. Styling select elements is a little tricky so we’re going to overwrite them by using a wrapper `<div>`.
 
@@ -144,7 +144,7 @@ Let’s make this a little prettier and add the following CSS styles. Styling se
 
 Now here’s our current app with our new styles.
 
-![](styled.png)
+![]($BASE_URL/styled.png)
 
 ## Building our Date `<select>` Element
 
@@ -232,7 +232,7 @@ Now, whenever one of our select changes we want to be able to call this method a
 
 Now, whenever we change our month, the number of days should reflect our choice.
 
-![](step-2.gif)
+![]($BASE_URL/step-2.gif)
 
 ## Updating our Display
 
@@ -329,7 +329,7 @@ Then, inside another component – we can just listen to our updateVal event and
 
 And once again, here’s what we’ve built.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 ## There ya have it!
 

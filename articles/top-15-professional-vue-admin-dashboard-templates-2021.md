@@ -27,7 +27,7 @@ Alright let’s jump right into it.
 
 ## 1\. [Vue Black Dashboard Pro](https://www.creative-tim.com/product/vue-black-dashboard-pro?ref=learnvue.co)
 
-![](vue-black-dashboard-pro.png)
+![]($BASE_URL/vue-black-dashboard-pro.png)
 
 Vue Black Dashboard Pro is a Bootstrap 4 Admin Dashboard that comes with dozens of components, custom elements, plugins, and example code that will be suited to perfectly match your design needs.
 
@@ -35,7 +35,7 @@ In my opinion, the default color schemes are really aesthetic and give your appl
 
 One of the things that I love about this dashboard is that it comes with both a dark mode and a light mode. This toggleable feature really adds that extra layer of customization that can make an application stand out.
 
-![](vue-black-dashboard-pro-light.png)
+![]($BASE_URL/vue-black-dashboard-pro-light.png)
 
 Vue Black Dashboard Pro is built on top of vue-cli and vue-router and contains some of the best documentation that I’ve seen from an online dashboard template.
 
@@ -54,7 +54,7 @@ Top Features:
 
 ## 2\. [Vue Paper Dashboard 2 Pro](https://www.creative-tim.com/product/vue-paper-dashboard-2-pro?ref=learnvue.co)
 
-![](vue-paper-2.png)
+![]($BASE_URL/vue-paper-2.png)
 
 Just looking through the example pages of Vue Paper Dashboard 2 Pro, you can see the attention to detail from the plugins all the way to the different components and elements.
 
@@ -72,7 +72,7 @@ Top Features:
 
 ## 3\. [Vue Light Bootstrap Dashboard Pro](https://www.creative-tim.com/product/vue-light-bootstrap-dashboard-pro?ref=learnvue.co)
 
-![](vue-lbd.png)
+![]($BASE_URL/vue-lbd.png)
 
 As the name suggests, Vue Light Bootstrap Dashboard Pro is built with Bootstrap 4 and VueJS.
 
@@ -93,7 +93,7 @@ Top Features:
 
 ## 4\. [Sing App Vue](https://flatlogic.com/templates/sing-app-vue?ref=7n2LQTuWWE)
 
-![](sing-app.png)
+![]($BASE_URL/sing-app.png)
 
 Sing App Vue is a great admin template that is built using Vue2 and Bootstrap 4. Personally, I really like the style of this dashboard and love the modern design principles it follows.
 
@@ -108,7 +108,7 @@ Top Features:
 
 ## 5\. [Vue Paper Dashboard](https://www.creative-tim.com/product/vue-paper-dashboard?ref=learnvue.co)
 
-![](vue-paper.png)
+![]($BASE_URL/vue-paper.png)
 
 This FREE dashboard is a great starting place if you want to learn more about the quality of Creative Tim assets.
 
@@ -127,7 +127,7 @@ Top Features:
 
 ## 6\. [CoPilot](https://github.com/misterGF/CoPilot)
 
-![](copilot.png)
+![]($BASE_URL/copilot.png)
 
 CoPilot is another free, Bootstrap-based responsive admin dashboard template. As an open source project, getting started in CoPilot is as easy as cloning the Github repository and going at it!
 
@@ -145,7 +145,7 @@ Top Features:
 
 ## 7\. [Vuetify Material Dashboard Pro](https://www.creative-tim.com/product/vuetify-material-dashboard-pro?ref=learnvue.co)
 
-![](vuetify-md-pro.png)
+![]($BASE_URL/vuetify-md-pro.png)
 
 The Vuetify Material Dashboard is an excellent choice for Vue developers who have had experience with the Vuetify framework.
 
@@ -165,7 +165,7 @@ Top Features:
 
 ## 8\. [Vue White Dashboard](https://www.creative-tim.com/product/vue-white-dashboard?ref=learnvue.co)
 
-![](vue-white.png)
+![]($BASE_URL/vue-white.png)
 
 Vue White Dashboard is a free Bootstrap 4 admin template. With 16 free elements, 3 custom plugins, and 7 example pages, it’s a great starting point for people just looking for a free way to get their dashboard tested.
 
@@ -182,7 +182,7 @@ Top Features:
 
 ## 9\. [Vue Chuck Admin](https://github.com/alpixel/vue-chuckadmin)
 
-![](vue-chuck-admin.png)
+![]($BASE_URL/vue-chuck-admin.png)
 
 This open source Vue admin dashboard is built [on top of the ChuckCSS Framework](http://chuckcss.io/).
 
@@ -202,7 +202,7 @@ Top Features:
 
 ## 10\. [CoreUI Vue](https://secure.2checkout.com/affiliate.php?ACCOUNT=250288725771&AFFILIATE=142056&PATH=https%3A%2F%2Fcoreui.io%2Fvue%2F%3FAFFILIATE%3D142056)
 
-![](core-ui.png)
+![]($BASE_URL/core-ui.png)
 
 CoreUI Vue is CoreUI’s free Vue dashboard template. Built on top of Bootstrap, it offers over 100 custom elements such as buttons, cards, image carousels, and so much more to really make the development process painless.
 
@@ -219,7 +219,7 @@ Top Features:
 
 ## 11\. [Vue Element Admin](https://github.com/PanJiaChen/vue-element-admin)
 
-![](vue-element.png)
+![]($BASE_URL/vue-element.png)
 
 Vue Element Admin is another open source Vue dashboard. Built with the [Element UI](https://element.eleme.io/) library, it’s incredibly popular with over 63K stars on its Github.
 
@@ -238,7 +238,7 @@ Top Features:
 
 ## 12\. [Vuestic Admin](https://github.com/epicmaxco/vuestic-admin)
 
-![](vuestic.png)
+![]($BASE_URL/vuestic.png)
 
 Vuestic Admin is a free Vue.js admin template with 44+ custom UI components.
 
@@ -257,7 +257,7 @@ Top Features:
 
 ## 13\. [Bootstrap Vue Argon Dashboard Pro](https://www.creative-tim.com/product/bootstrap-vue-argon-dashboard-pro?ref=learnvue.co)
 
-![](bootstrap-vue-argon.png)
+![]($BASE_URL/bootstrap-vue-argon.png)
 
 This dashboard by Creative Tim is one of my favorites visually. All of the elements just look so clean, present data efficiently, and everything is very easy to customize.
 
@@ -276,7 +276,7 @@ Top Features:
 
 ## 14\. [Vue Material Template](https://flatlogic.com/templates/vue-material-template-full?ref=7n2LQTuWWE)
 
-![](vue-material.png)
+![]($BASE_URL/vue-material.png)
 
 Built with Vuetify and Material design principles, this template by [FlatLogic](https://flatlogic.com/) is a gorgeous way to start building your admin dashboard.
 
@@ -295,7 +295,7 @@ Top Features:
 
 ## 15\. [Light Blue Vue Lite](https://flatlogic.com/templates/light-blue-vue-lite?ref=7n2LQTuWWE)
 
-![](lb-vue-lite.png)
+![]($BASE_URL/lb-vue-lite.png)
 
 Light Blue Vue Lite is one of the best free dashboard templates out there.
 
@@ -313,7 +313,7 @@ Top Features:
 
 ## 16\. [Vue Material Dashboard](https://www.creative-tim.com/product/vue-material-dashboard?ref=learnvue.co)
 
-![](vue-md.png)
+![]($BASE_URL/vue-md.png)
 
 Vue Material Dashboard is another free resource using Vue Material. It’s a great template to build a quick app and can even be used for larger apps if you’re willing to do some extra coding yourself.
 
@@ -329,7 +329,7 @@ Top Features:
 
 ## 17\. [Vue Now UI Dashboard Pro](https://www.creative-tim.com/product/vue-now-ui-dashboard-pro?ref=learnvue.co)
 
-![](vue-now-ui.png)
+![]($BASE_URL/vue-now-ui.png)
 
 The final template on this list is Vue Now UI Dashboard Pro – a Bootstrap and Vue-based dashboard.
 

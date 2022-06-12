@@ -47,7 +47,7 @@ This means that code for just one feature could be spread out hundreds of lines 
 
 Here’s just one example from the [Vue Composition API RFC ](https://vue-composition-api-rfc.netlify.com/)showing how code can be organized by feature now.
 
-![](../4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
+![]($BASE_URL/../4-vue3-composition-api-tips-you-should-know/img/composition-api.png)
 
 Now, here is the equivalent code using the new Composition API.
 

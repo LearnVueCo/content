@@ -100,7 +100,7 @@ button {
 
 And here’s a look at our current form.
 
-![](styled-form.png)
+![]($BASE_URL/styled-form.png)
 
 Now that we have our form set up, let’s connect it to some data.
 
@@ -159,7 +159,7 @@ export default {
 
 So, if we click our button, we get our nice alert notification.
 
-![](notification.png)
+![]($BASE_URL/notification.png)
 
 Fantastic. We’re finally ready to start validating our inputs.
 
@@ -236,13 +236,13 @@ Inside `submitForm`, let’s add `console.log(this.v$)`
 
 In our console, we can see a ton of different properties. Dirty properties check if there are new input values that haven’t been validated yet, error is a boolean that says if **any input **is invalid, errors is where we can get the specific error information for our form.
 
-![](console-output.png)
+![]($BASE_URL/console-output.png)
 
 If you want to learn specifics about each one, I recommend checking out the [Vuelidate documentation](https://vuelidate-next.netlify.app/).
 
 If we scroll down, we’ll see both our `email` and `password` properties that are also Vuelidate objects with a pretty similar structure to this root object.
 
-![](console-output-2.png)
+![]($BASE_URL/console-output-2.png)
 
 Right above them, are two pretty important methods: `touch` and `validate`:
 
@@ -422,7 +422,7 @@ That code looks like this.
 
 Now, if we hit submit with typing an email, we’ll see that it’s a required field. If we give it a value but not a valid email, we’re told that the value is not a valid email address.
 
-![](error-msg.png)
+![]($BASE_URL/error-msg.png)
 
 Fantastic – let’s do the same thing for password and confirm password.
 
@@ -535,7 +535,7 @@ Awesome.
 
 So now, if we have everything valid, but it’s not from learnvue, we get our nice error message.
 
-![](custom-validation.png)
+![]($BASE_URL/custom-validation.png)
 
 You can also apply these `helpers.withMessage` to add custom messages to built in validators like `required`.
 

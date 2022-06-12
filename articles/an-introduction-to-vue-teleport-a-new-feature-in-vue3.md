@@ -20,7 +20,7 @@ In this tutorial, we’ll cover:
 
 Here’s an example of what we’ll be making.
 
-![](result.gif)
+![]($BASE_URL/result.gif)
 
 And this is the DOM using Teleport. As you can see, there is this portal-target div outside of our Vue app where our template code is being “teleported”.
 
@@ -121,11 +121,11 @@ Since we passed it in `#portal-target`, our Vue app will locate the `#portal-tar
 
 This is what our result should be.
 
-![](result.gifcon)
+![]($BASE_URL/result.gifcon)
 
 Inspecting the elements and looking at the DOM makes it very clear what’s happening.
 
-![](console.png)
+![]($BASE_URL/console.png)
 
 Basically, we can use all of the logic from our VuePortals [component](https://learnvue.co/2019/12/using-component-slots-in-vuejs%e2%80%8a-%e2%80%8aan-overview/), but tell our project to render that template code somewhere else!
 

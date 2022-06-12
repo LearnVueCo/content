@@ -117,7 +117,7 @@ And then in a parent component, we pass it several attributes.
 
 The result of our log statement will be:
 
-![](log-output.png)
+![]($BASE_URL/log-output.png)
 
 As you can see, it contains everything besides our declared props. This includes things like event listeners and HTML attributes.
 
@@ -222,7 +222,7 @@ Now, if we run this with a simple parent component like this
 
 Here’s what our finished DOM will look like.
 
-![](rendering-slots.png)
+![]($BASE_URL/rendering-slots.png)
 
 Fantastic!
 
