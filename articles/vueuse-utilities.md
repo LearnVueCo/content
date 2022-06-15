@@ -13,7 +13,7 @@ It has dozens of solutions for common developer use cases like tracking ref chan
 
 I love the VueUse library because it really puts the developers first when deciding what utilities to provide, and it is a well-maintained library as it stays up to date with the current versions of Vue.
 
-## What kind of utilities does VueUse have?
+## What is VueUse?
 
 If you want to see the complete list of every single utility, I definitely recommend checking out the [official documentation](https://vueuse.org/functions.html). But to summarize, there are 9 types of functions in VueUse.
 
@@ -33,32 +33,42 @@ In this tutorial, we’ll be taking a look at 5 different VueUse functions so yo
 
 But first, let’s add it to our Vue project!
 
-## Installing VueUse into your Vue Project
+## Installing VueUse 
 
 One of the best features of VueUse is that **it is compatible with both Vue 2 and Vue 3 from just one package!**
 
 There are two options for installing VueUse: npm or CDN
 
-```bash
+::codeMultiple
+---
+fFilename: Node
+fLang: bash
+sFilename: CDN
+sLang: html
+
+---
+#first
+```bash 
 npm i @vueuse/core # yarn add @vueuse/core
 ```
-
-```vue
+#second
+```html 
 <script src="https://unpkg.com/@vueuse/shared"></script>
 <script src="https://unpkg.com/@vueuse/core"></script>
 ```
+::
 
 I recommend using the NPM as it makes the usage much easier to understand, but if we using the CDN, VueUse will be accessible in the app via `window.VueUse`
 
 For NPM installs, all the functions can be accessed by importing them from `@vueuse/core` using standard object destructuring like this:
 
-```js
+```js [HIDE]
 import { useRefHistory } from '@vueuse/core'
 ```
 
 Alright – now that we have VueUse installed, let’s use it inside of our app!
 
-## useRefHistory to track changes to reactive data
+## `useRefHistory` 
 
 `useRefHistory` tracks every change made to a ref and stores it inside of an array. This allows us to easily provide undo and redo functionality to our application.
 
@@ -66,7 +76,7 @@ Let’s look at an example where we’re building a text area that we want to be
 
 The first step is creating our basic component without VueUse – using a ref, textarea, and buttons for undo and redo.
 
-```vue
+```vue [Foo.vue] {}
 <template>
   <p>
     <button>Undo</button>
@@ -106,7 +116,7 @@ This triggers a watcher every time our ref changes – updating the `history` pr
 
 Then, so we can really see what’s going on, let’s print out history inside of our template and also call our `undo` and `redo` functions whenever the corresponding button is clicked.
 
-```vue{}[FinishedComponent.vue]
+```vue{3,4,7-11,16,18}[Foo.vue]
 <template>
   <p>
     <button @click="undo">Undo</button>
@@ -142,7 +152,15 @@ Then, so we can really see what’s going on, let’s print out history inside o
 
 Okay – let’s run it. As we type, every character triggers a new entry in our history array, and if we click undo/redo, we’ll go to the corresponding entry.
 
-![]($BASE_URL/use-ref-history.gif)
+::demoWrapper
+---
+demo: ExUseRefHistory
+header: Try it! Start typing
+subheader: We can see every time our reactive value changes 
+browserTitle: useRefHistory Demo
+
+---
+::
 
 There are also different options that add even more functionality to this function. For example, we can track reactive objects deeply and limit the number of history entries like this.
 
@@ -155,7 +173,7 @@ const { history, undo, redo } = useRefHistory(text, {
 
 For a full list of options, be sure to check out the documentation.
 
-## `onClickOutside` to close modals
+## `onClickOutside` 
 
 `onClickOutside` detects any click made outside of an element. In my experience, the most common use case for this feature is closing any modal or popup window.
 
@@ -223,13 +241,21 @@ Here’s a simple component with a popup window using `onClickOutside`.
 
 The result is like this, where we can open the popup with our button, and then close it by clicking outside the popup-content window.
 
-![]($BASE_URL/on-click-outside.gif)
+::demoWrapper
+---
+demo: ExOnClickOutside
+header: It's that easy.
+subheader: Open the modal and click around
+browserTitle: onClickOutside Demo
+---
+::
 
-## useVModel simplifies v-model binding
+## `useVModel`
 
 A common use case for Vue developers is creating a custom v-model binding for a component. This means that our component accepts a value as a prop, and whenever that value is modified, our component will emit an update event to the parent.
 
-![]($BASE_URL/v-model.png)
+![]($BASE_URL/v-model.png){.max-w-xs}
+
 
 [For a full tutorial on building custom v-models, check out our complete guide on the topic.](https://learnvue.co/2021/01/everything-you-need-to-know-about-vue-v-model/)
 
@@ -237,7 +263,16 @@ The useVModel function simplifies this into just using the standard ref syntax. 
 
 Instead of using ref and calling `props.value `and `update:value`, we can use `useVModel` and treat it just like a normal ref! **This helps reduce the number of different syntaxes that we need to remember!**
 
-```vue{}[CustomInput.vue]
+::codeMultiple
+---
+fFilename: CustomInput.vue
+fLang: vue
+sFilename: Parent.vue
+sLang: vue
+
+---
+#first
+```vue
 <template>
   <div>
     <input type="text" :value="data" @input="update" />
@@ -263,12 +298,8 @@ Instead of using ref and calling `props.value `and `update:value`, we can use `u
   }
 </script>
 ```
-
-Whenever we need to access our value, we just call `.value` and useVModel will give us the value from our component props. And whenever we change the value of our object, useVModel will **emit an update event **to the parent component.
-
-Here’s a quick example of what that parent component might look like…
-
-```vue{}[ParentComponent.vue]
+#second
+```vue
 <template>
   <div>
     <p>{{ data }}</p>
@@ -291,13 +322,21 @@ Here’s a quick example of what that parent component might look like…
     }
   }
 </script>
+
 ```
+::
+
+Whenever we need to access our value, we just call `.value` and useVModel will give us the value from our component props. And whenever we change the value of our object, useVModel will **emit an update event **to the parent component.
+
+Here’s a quick example of what that parent component might look like…
+
+
 
 The result looks something like this, where our value in our parent always stays up to date with the input in the child.
 
 ![]($BASE_URL/use-vmodel.gif)
 
-## useIntersectionObserver to track element visibility
+## `useIntersectionObserver`
 
 [Intersection Observers ](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)are very powerful when determining whether or not two elements are overlapping. A great use case for this is when checking if an element is currently visible in the viewport.
 
@@ -389,7 +428,7 @@ const { stop } = useIntersectionObserver(
 )
 ```
 
-## useTransition to ease between values
+## `useTransition` 
 
 `useTransition` is one of **my favorite functions** in the entire VueUse library. It allows us to smoothly ease between numerical values in just one line.
 
@@ -397,7 +436,9 @@ We have a numerical source stored as a ref and an output that will be the one th
 
 For example, let’s say we want to build a counter that eases between two smooth integer values.
 
-![]($BASE_URL/use-transition.gif)We can do that in three steps:
+![]($BASE_URL/use-transition.gif)
+
+We can do that in three steps:
 
 - Creating our `count` ref and initializing it to zero
 - Creating our `output` ref with `useTransition` (setting our duration and transition type)
