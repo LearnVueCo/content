@@ -30,11 +30,20 @@ Let’s take a look at an example where we bind the color of a paragraph to comp
 
 ```vue
 <script setup>
+<<<<<<< HEAD
 import { ref } from 'vue'
 
 const color = ref('red')
 
 </script>
+=======
+
+import { ref } from 'vue'
+const color = ref('red')
+
+</script>
+
+>>>>>>> fedfe20512de22605174904725f005810a9d764e
 <template>
   <div>
     <div class="text">hello</div>

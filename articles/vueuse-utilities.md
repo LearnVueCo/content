@@ -13,7 +13,7 @@ It has dozens of solutions for common developer use cases like tracking ref chan
 
 I love the VueUse library because it really puts the developers first when deciding what utilities to provide, and it is a well-maintained library as it stays up to date with the current versions of Vue.
 
-## What kind of utilities does VueUse have?
+## What is VueUse?
 
 If you want to see the complete list of every single utility, I definitely recommend checking out the [official documentation](https://vueuse.org/functions.html). But to summarize, there are 9 types of functions in VueUse.
 
@@ -33,32 +33,42 @@ In this tutorial, we’ll be taking a look at 5 different VueUse functions so yo
 
 But first, let’s add it to our Vue project!
 
-## Installing VueUse into your Vue Project
+## Installing VueUse 
 
 One of the best features of VueUse is that **it is compatible with both Vue 2 and Vue 3 from just one package!**
 
 There are two options for installing VueUse: npm or CDN
 
-```bash [Installation - Node]
+::code-multiple
+---
+fFilename: Node
+fLang: bash
+sFilename: CDN
+sLang: html
+
+---
+#first
+```bash 
 npm i @vueuse/core # yarn add @vueuse/core
 ```
-
-```html [Installation - CDN]
+#second
+```html 
 <script src="https://unpkg.com/@vueuse/shared"></script>
 <script src="https://unpkg.com/@vueuse/core"></script>
 ```
+::
 
 I recommend using the NPM as it makes the usage much easier to understand, but if we using the CDN, VueUse will be accessible in the app via `window.VueUse`
 
 For NPM installs, all the functions can be accessed by importing them from `@vueuse/core` using standard object destructuring like this:
 
-```js [HIDE] {} 
+```js [HIDE]
 import { useRefHistory } from '@vueuse/core'
 ```
 
 Alright – now that we have VueUse installed, let’s use it inside of our app!
 
-## useRefHistory to track changes to reactive data
+## `useRefHistory` 
 
 `useRefHistory` tracks every change made to a ref and stores it inside of an array. This allows us to easily provide undo and redo functionality to our application.
 
@@ -163,7 +173,7 @@ const { history, undo, redo } = useRefHistory(text, {
 
 For a full list of options, be sure to check out the documentation.
 
-## `onClickOutside` to close modals
+## `onClickOutside` 
 
 `onClickOutside` detects any click made outside of an element. In my experience, the most common use case for this feature is closing any modal or popup window.
 
@@ -240,7 +250,7 @@ browserTitle: onClickOutside Demo
 ---
 ::
 
-## useVModel simplifies v-model binding
+## `useVModel`
 
 A common use case for Vue developers is creating a custom v-model binding for a component. This means that our component accepts a value as a prop, and whenever that value is modified, our component will emit an update event to the parent.
 
@@ -262,7 +272,7 @@ sLang: vue
 
 ---
 #first
-```vue{}
+```vue
 <template>
   <div>
     <input type="text" :value="data" @input="update" />
@@ -289,7 +299,7 @@ sLang: vue
 </script>
 ```
 #second
-```vue{}
+```vue
 <template>
   <div>
     <p>{{ data }}</p>
@@ -326,7 +336,7 @@ The result looks something like this, where our value in our parent always stays
 
 ![]($BASE_URL/use-vmodel.gif)
 
-## useIntersectionObserver to track element visibility
+## `useIntersectionObserver`
 
 [Intersection Observers ](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)are very powerful when determining whether or not two elements are overlapping. A great use case for this is when checking if an element is currently visible in the viewport.
 
@@ -418,7 +428,7 @@ const { stop } = useIntersectionObserver(
 )
 ```
 
-## useTransition to ease between values
+## `useTransition` 
 
 `useTransition` is one of **my favorite functions** in the entire VueUse library. It allows us to smoothly ease between numerical values in just one line.
 
