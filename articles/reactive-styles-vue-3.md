@@ -29,21 +29,17 @@ To keep it short, there are just two steps we need to use this feature:
 Let’s take a look at an example where we bind the color of a paragraph to component data.
 
 ```vue
+<script setup>
+import { ref } from 'vue'
+
+const color = ref('red')
+
+</script>
 <template>
   <div>
     <div class="text">hello</div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      color: 'red',
-    }
-  },
-}
-</script>
 
 <style>
 .text {

@@ -39,11 +39,11 @@ One of the best features of VueUse is that **it is compatible with both Vue 2 an
 
 There are two options for installing VueUse: npm or CDN
 
-```bash
+```bash [Installation - Node]
 npm i @vueuse/core # yarn add @vueuse/core
 ```
 
-```vue
+```html [Installation - CDN]
 <script src="https://unpkg.com/@vueuse/shared"></script>
 <script src="https://unpkg.com/@vueuse/core"></script>
 ```
@@ -52,7 +52,7 @@ I recommend using the NPM as it makes the usage much easier to understand, but i
 
 For NPM installs, all the functions can be accessed by importing them from `@vueuse/core` using standard object destructuring like this:
 
-```js
+```js [HIDE] {} 
 import { useRefHistory } from '@vueuse/core'
 ```
 
@@ -66,7 +66,7 @@ Let’s look at an example where we’re building a text area that we want to be
 
 The first step is creating our basic component without VueUse – using a ref, textarea, and buttons for undo and redo.
 
-```vue
+```vue [Foo.vue] {}
 <template>
   <p>
     <button>Undo</button>
@@ -106,7 +106,7 @@ This triggers a watcher every time our ref changes – updating the `history` pr
 
 Then, so we can really see what’s going on, let’s print out history inside of our template and also call our `undo` and `redo` functions whenever the corresponding button is clicked.
 
-```vue{}[FinishedComponent.vue]
+```vue{3,4,7-11,16,18}[Foo.vue]
 <template>
   <p>
     <button @click="undo">Undo</button>
@@ -142,7 +142,15 @@ Then, so we can really see what’s going on, let’s print out history inside o
 
 Okay – let’s run it. As we type, every character triggers a new entry in our history array, and if we click undo/redo, we’ll go to the corresponding entry.
 
-![]($BASE_URL/use-ref-history.gif)
+::demo-wrapper
+---
+demo: ExUseRefHistory
+header: Try it! Start typing
+subheader: We can see every time our reactive value changes 
+browserTitle: useRefHistory Demo
+
+---
+::
 
 There are also different options that add even more functionality to this function. For example, we can track reactive objects deeply and limit the number of history entries like this.
 
@@ -223,13 +231,21 @@ Here’s a simple component with a popup window using `onClickOutside`.
 
 The result is like this, where we can open the popup with our button, and then close it by clicking outside the popup-content window.
 
-![]($BASE_URL/on-click-outside.gif)
+::demo-wrapper
+---
+demo: ExOnClickOutside
+header: It's that easy.
+subheader: Open the modal and click around
+browserTitle: onClickOutside Demo
+---
+::
 
 ## useVModel simplifies v-model binding
 
 A common use case for Vue developers is creating a custom v-model binding for a component. This means that our component accepts a value as a prop, and whenever that value is modified, our component will emit an update event to the parent.
 
-![]($BASE_URL/v-model.png)
+![]($BASE_URL/v-model.png){.max-w-xs}
+
 
 [For a full tutorial on building custom v-models, check out our complete guide on the topic.](https://learnvue.co/2021/01/everything-you-need-to-know-about-vue-v-model/)
 
@@ -237,7 +253,16 @@ The useVModel function simplifies this into just using the standard ref syntax. 
 
 Instead of using ref and calling `props.value `and `update:value`, we can use `useVModel` and treat it just like a normal ref! **This helps reduce the number of different syntaxes that we need to remember!**
 
-```vue{}[CustomInput.vue]
+::code-multiple
+---
+fFilename: CustomInput.vue
+fLang: vue
+sFilename: Parent.vue
+sLang: vue
+
+---
+#first
+```vue{}
 <template>
   <div>
     <input type="text" :value="data" @input="update" />
@@ -263,12 +288,8 @@ Instead of using ref and calling `props.value `and `update:value`, we can use `u
   }
 </script>
 ```
-
-Whenever we need to access our value, we just call `.value` and useVModel will give us the value from our component props. And whenever we change the value of our object, useVModel will **emit an update event **to the parent component.
-
-Here’s a quick example of what that parent component might look like…
-
-```vue{}[ParentComponent.vue]
+#second
+```vue{}
 <template>
   <div>
     <p>{{ data }}</p>
@@ -291,7 +312,15 @@ Here’s a quick example of what that parent component might look like…
     }
   }
 </script>
+
 ```
+::
+
+Whenever we need to access our value, we just call `.value` and useVModel will give us the value from our component props. And whenever we change the value of our object, useVModel will **emit an update event **to the parent component.
+
+Here’s a quick example of what that parent component might look like…
+
+
 
 The result looks something like this, where our value in our parent always stays up to date with the input in the child.
 
@@ -397,7 +426,9 @@ We have a numerical source stored as a ref and an output that will be the one th
 
 For example, let’s say we want to build a counter that eases between two smooth integer values.
 
-![]($BASE_URL/use-transition.gif)We can do that in three steps:
+![]($BASE_URL/use-transition.gif)
+
+We can do that in three steps:
 
 - Creating our `count` ref and initializing it to zero
 - Creating our `output` ref with `useTransition` (setting our duration and transition type)
