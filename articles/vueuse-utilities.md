@@ -39,7 +39,7 @@ One of the best features of VueUse is that **it is compatible with both Vue 2 an
 
 There are two options for installing VueUse: npm or CDN
 
-::code-multiple
+::prose-code-multiple
 ---
 fFilename: Node
 fLang: bash
@@ -154,7 +154,7 @@ Okay – let’s run it. As we type, every character triggers a new entry in our
 
 ::demo-wrapper
 ---
-demo: ExUseRefHistory
+demo: DemoUseRefHistory
 header: Try it! Start typing
 subheader: We can see every time our reactive value changes 
 browserTitle: useRefHistory Demo
@@ -243,7 +243,7 @@ The result is like this, where we can open the popup with our button, and then c
 
 ::demo-wrapper
 ---
-demo: ExOnClickOutside
+demo: DemoOnClickOutside
 header: It's that easy.
 subheader: Open the modal and click around
 browserTitle: onClickOutside Demo
@@ -263,7 +263,7 @@ The useVModel function simplifies this into just using the standard ref syntax. 
 
 Instead of using ref and calling `props.value `and `update:value`, we can use `useVModel` and treat it just like a normal ref! **This helps reduce the number of different syntaxes that we need to remember!**
 
-::code-multiple
+::prose-code-multiple
 ---
 fFilename: CustomInput.vue
 fLang: vue
